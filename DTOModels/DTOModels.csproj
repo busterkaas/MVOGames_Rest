@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MVOGamesX\MVOGamesDAL\MVOGamesDAL.csproj">
-      <Project>{0d37edb5-8633-42e7-9041-83d7c38eb7ba}</Project>
-      <Name>MVOGamesDAL</Name>
+    <ProjectReference Include="..\MVOGames_DAL\MVOGames_DAL.csproj">
+      <Project>{a87b92ee-f954-4af4-ba70-745b1f4a043d}</Project>
+      <Name>MVOGames_DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

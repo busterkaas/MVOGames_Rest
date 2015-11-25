@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGamesDAL.Models
+namespace MVOGames_DAL.Models
 {
     public class Game
     {
@@ -27,8 +27,7 @@ namespace MVOGamesDAL.Models
         public string CoverUrl { get; set; }
         public string TrailerUrl { get; set; }
         public string Description { get; set; }
-        public virtual List<PlatformGame> GPlatforms { get; set; } 
+        public virtual List<PlatformGame> GPlatforms { get; set; }
         public virtual List<Genre> Genres { get; set; }
-        
     }
 }

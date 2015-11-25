@@ -1,15 +1,15 @@
-﻿using MVOGamesDAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGamesDAL.Context;
-using System.Data.Entity.Infrastructure;
+using MVOGames_DAL.Context;
+using MVOGames_DAL.Models;
 
-namespace MVOGamesDAL.Repositories
+namespace MVOGames_DAL.Repository
 {
-    class GameRepository : IRepository<Game>
+    public class GameRepository : IRepository<Game>
     {
         private MVOGamesContext ctx;
         public GameRepository(MVOGamesContext context)
@@ -18,8 +18,8 @@ namespace MVOGamesDAL.Repositories
         }
         public void Add(Game t)
         {
-                ctx.Games.Add(t);
-                ctx.SaveChanges();
+            ctx.Games.Add(t);
+            ctx.SaveChanges();
         }
 
         public void Delete(int? id)
@@ -27,9 +27,9 @@ namespace MVOGamesDAL.Repositories
             Game game = Find(id);
             try
             {
-                    ctx.Games.Attach(game);
-                    ctx.Games.Remove(game);
-                    ctx.SaveChanges();
+                ctx.Games.Attach(game);
+                ctx.Games.Remove(game);
+                ctx.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -54,7 +54,7 @@ namespace MVOGamesDAL.Repositories
         {
             try
             {
-                    return ctx.Games.Include("Genres").ToList();
+                return ctx.Games.Include("Genres").ToList();
             }
             catch (Exception)
             {
@@ -64,19 +64,19 @@ namespace MVOGamesDAL.Repositories
 
         public void Update(Game t)
         {
-                foreach (var gameDB in ctx.Games.ToList())
+            foreach (var gameDB in ctx.Games.ToList())
+            {
+                if (t.Id == gameDB.Id)
                 {
-                    if (t.Id == gameDB.Id)
-                    {
-                        gameDB.Title = t.Title;
-                        gameDB.ReleaseDate = t.ReleaseDate;
-                        gameDB.TrailerUrl = t.TrailerUrl;
-                        gameDB.CoverUrl = t.CoverUrl;
-                        gameDB.Description = t.Description;
-                        gameDB.Genres = t.Genres;
-                        ctx.Games.Attach(gameDB);
-                    }
+                    gameDB.Title = t.Title;
+                    gameDB.ReleaseDate = t.ReleaseDate;
+                    gameDB.TrailerUrl = t.TrailerUrl;
+                    gameDB.CoverUrl = t.CoverUrl;
+                    gameDB.Description = t.Description;
+                    gameDB.Genres = t.Genres;
+                    ctx.Games.Attach(gameDB);
                 }
+            }
         }
     }
 }

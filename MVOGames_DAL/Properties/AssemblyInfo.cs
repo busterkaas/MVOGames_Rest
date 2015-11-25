@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MVOGamesDAL")]
+[assembly: AssemblyTitle("MVOGames_DAL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MVOGamesDAL")]
+[assembly: AssemblyProduct("MVOGames_DAL")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0d37edb5-8633-42e7-9041-83d7c38eb7ba")]
+[assembly: Guid("a87b92ee-f954-4af4-ba70-745b1f4a043d")]
 
 // Version information for an assembly consists of the following four values:
 //

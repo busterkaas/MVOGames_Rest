@@ -1,16 +1,16 @@
-﻿using MVOGamesDAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVOGames_DAL.Models;
 
-namespace MVOGamesDAL.Context
+namespace MVOGames_DAL.Context
 {
     public class MVOGamesContext : DbContext
     {
-        public MVOGamesContext(): base("MVOGamesDB")
+        public MVOGamesContext() : base("MVOGamesDB")
         {
             //Add this line to make json conversin happy.
             //Configuration.ProxyCreationEnabled = false;
@@ -31,7 +31,5 @@ namespace MVOGamesDAL.Context
         public System.Data.Entity.DbSet<Order> Orders { get; set; }
         public System.Data.Entity.DbSet<Orderline> Orderlines { get; set; }
         public System.Data.Entity.DbSet<PlatformGame> PlatformGames { get; set; }
-
-
     }
 }

@@ -1,12 +1,12 @@
-﻿using MVOGamesDAL.Context;
-using MVOGamesDAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVOGames_DAL.Context;
+using MVOGames_DAL.Models;
 
-namespace MVOGamesDAL.Repositories
+namespace MVOGames_DAL.Repository
 {
     public class UserRepository : IRepository<User>
     {

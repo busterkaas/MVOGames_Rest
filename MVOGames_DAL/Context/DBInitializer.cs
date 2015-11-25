@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGamesDAL.Context
+namespace MVOGames_DAL.Context
 {
     public static class DBInitializer
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGamesDAL.Models
+namespace MVOGames_DAL.Models
 {
     public class User
     {
@@ -50,5 +50,7 @@ namespace MVOGamesDAL.Models
         public virtual List<Crew> Crews { get; set; }
         [Required]
         public virtual Role Role { get; set; }
+
+        public int  RoleId { get; set; }
     }
 }

@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGamesDAL.Context;
-using MVOGamesDAL.Models;
+using MVOGames_DAL.Context;
+using MVOGames_DAL.Models;
 
-namespace MVOGamesDAL.Repositories
+namespace MVOGames_DAL.Repository
 {
-    public class PlatformRepository : IRepository<Platform>
+    public class RoleRepository : IRepository<Role>
     {
         private MVOGamesContext ctx;
-        public PlatformRepository(MVOGamesContext context)
+        public RoleRepository(MVOGamesContext context)
         {
             ctx = context;
         }
-
-        public List<Platform> ReadAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(Platform t)
+        public void Add(Role t)
         {
             throw new NotImplementedException();
         }
@@ -31,12 +25,17 @@ namespace MVOGamesDAL.Repositories
             throw new NotImplementedException();
         }
 
-        public Platform Find(int? id)
+        public Role Find(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Platform t)
+        public List<Role> ReadAll()
+        {
+            return ctx.Roles.ToList();
+        }
+
+        public void Update(Role t)
         {
             throw new NotImplementedException();
         }

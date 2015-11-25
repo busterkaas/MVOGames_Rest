@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGamesDAL.Context;
-using MVOGamesDAL.Repositories;
-using MVOGamesDAL.Models;
+using MVOGames_DAL.Context;
+using MVOGames_DAL.Models;
+using MVOGames_DAL.Repository;
 
-namespace MVOGamesDAL
+namespace MVOGames_DAL
 {
     public class DALFacade
     {
@@ -50,4 +50,3 @@ namespace MVOGamesDAL
         }
     }
 }
-

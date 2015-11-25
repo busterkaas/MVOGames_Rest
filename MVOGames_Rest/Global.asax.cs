@@ -13,7 +13,7 @@ namespace MVOGames_Rest
     {
         protected void Application_Start()
         {
-            MVOGamesDAL.Context.DBInitializer.Initialize();
+            MVOGames_DAL.Context.DBInitializer.Initialize();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

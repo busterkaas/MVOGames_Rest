@@ -1,14 +1,14 @@
-﻿using MVOGamesDAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGamesDAL.Context;
+using MVOGames_DAL.Context;
+using MVOGames_DAL.Models;
 
-namespace MVOGamesDAL.Repositories
+namespace MVOGames_DAL.Repository
 {
-    class GenreRepository : IRepository<Genre>
+    public class GenreRepository : IRepository<Genre>
     {
         private MVOGamesContext ctx;
         public GenreRepository(MVOGamesContext context)
@@ -19,8 +19,8 @@ namespace MVOGamesDAL.Repositories
         {
             //using (var ctx = new MVOGamesContext())
             //{
-                ctx.Genres.Add(t);
-                ctx.SaveChanges();
+            ctx.Genres.Add(t);
+            ctx.SaveChanges();
             //}
         }
 
@@ -51,7 +51,7 @@ namespace MVOGamesDAL.Repositories
         {
             //using (var ctx = new MVOGamesContext())
             //{
-                return ctx.Genres.ToList();
+            return ctx.Genres.ToList();
             //}
         }
 

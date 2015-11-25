@@ -10,9 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DTOModels.Converter;
 using DTOModels.Models;
-using MVOGamesDAL;
-using MVOGamesDAL.Context;
-using MVOGamesDAL.Models;
+using MVOGames_DAL;
+using MVOGames_DAL.Models;
 
 namespace MVOGames_Rest.Controllers
 {

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVOGames_Rest", "MVOGames_R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOModels", "DTOModels\DTOModels.csproj", "{7CB8527A-50E1-411D-817C-15EECF56B884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVOGamesDAL", "..\MVOGamesX\MVOGamesDAL\MVOGamesDAL.csproj", "{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVOGames_DAL", "MVOGames_DAL\MVOGames_DAL.csproj", "{A87B92EE-F954-4AF4-BA70-745B1F4A043D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{7CB8527A-50E1-411D-817C-15EECF56B884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB8527A-50E1-411D-817C-15EECF56B884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CB8527A-50E1-411D-817C-15EECF56B884}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87B92EE-F954-4AF4-BA70-745B1F4A043D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87B92EE-F954-4AF4-BA70-745B1F4A043D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87B92EE-F954-4AF4-BA70-745B1F4A043D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87B92EE-F954-4AF4-BA70-745B1F4A043D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

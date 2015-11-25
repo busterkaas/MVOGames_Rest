@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGamesDAL.Models
+namespace MVOGames_DAL.Models
 {
     public class Platform
     {
@@ -13,9 +13,9 @@ namespace MVOGamesDAL.Models
         {
             PGames = new List<PlatformGame>();
         }
-            public int Id { get; set; }
-            [Required]
-            public string Name { get; set; }
-            public virtual List<PlatformGame> PGames { get; set; } 
+        public int Id { get; set; }
+        [Required]
+        public string Name { get; set; }
+        public virtual List<PlatformGame> PGames { get; set; }
     }
 }

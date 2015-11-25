@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGamesDAL.Models
+namespace MVOGames_DAL.Models
 {
     public class Orderline
     {
@@ -28,6 +28,5 @@ namespace MVOGamesDAL.Models
         public virtual Game Game { get; set; }
 
         public virtual Order Order { get; set; }
-
     }
 }
