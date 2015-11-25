@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVOGames_Rest", "MVOGames_Rest\MVOGames_Rest.csproj", "{13AF39AB-E22F-4988-A53D-AC3AA8545372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOModels", "DTOModels\DTOModels.csproj", "{7CB8527A-50E1-411D-817C-15EECF56B884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVOGamesDAL", "..\MVOGamesX\MVOGamesDAL\MVOGamesDAL.csproj", "{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13AF39AB-E22F-4988-A53D-AC3AA8545372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AF39AB-E22F-4988-A53D-AC3AA8545372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AF39AB-E22F-4988-A53D-AC3AA8545372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AF39AB-E22F-4988-A53D-AC3AA8545372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB8527A-50E1-411D-817C-15EECF56B884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB8527A-50E1-411D-817C-15EECF56B884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB8527A-50E1-411D-817C-15EECF56B884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB8527A-50E1-411D-817C-15EECF56B884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D37EDB5-8633-42E7-9041-83D7C38EB7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
