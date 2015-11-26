@@ -28,7 +28,7 @@ namespace MVOGames_DAL
         {
             return gameRepo ?? (gameRepo = new GameRepository(ctx));
         }
-        public IRepository<Genre> GetGenresRepository()
+        public IRepository<Genre> GetGenreRepository()
         {
             return genreRepo ?? (genreRepo = new GenreRepository(ctx));
         }
