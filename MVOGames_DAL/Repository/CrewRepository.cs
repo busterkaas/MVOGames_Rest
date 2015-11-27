@@ -17,27 +17,51 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(Crew t)
         {
-            throw new NotImplementedException();
+            ctx.Crews.Add(t);
+            ctx.SaveChanges();
         }
 
         public void Delete(int? id)
         {
-            throw new NotImplementedException();
+            Crew crew = Find(id);
+            try
+            {
+                ctx.Crews.Attach(crew);
+                ctx.Crews.Remove(crew);
+                ctx.SaveChanges();
+            }
+            catch
+            {
+            }
         }
 
         public Crew Find(int? id)
         {
-            throw new NotImplementedException();
+            foreach (var item in ReadAll())
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         public List<Crew> ReadAll()
         {
-            throw new NotImplementedException();
+            return ctx.Crews.ToList();
         }
 
         public void Update(Crew t)
         {
-            throw new NotImplementedException();
+            foreach (var crewDB in ctx.Crews.ToList())
+            {
+                if (t.Id == crewDB.Id)
+                {
+                    crewDB.Name = t.Name;
+                    ctx.Crews.Attach(crewDB);
+                }
+            }
         }
     }
 }

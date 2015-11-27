@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +18,35 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(User t)
         {
-            throw new NotImplementedException();
+            ctx.Users.Add(t);
+            ctx.SaveChanges();
         }
 
         public void Delete(int? id)
         {
-            throw new NotImplementedException();
+            User user = Find(id);
+            try
+            {
+                ctx.Users.Attach(user);
+                ctx.Users.Remove(user);
+                ctx.SaveChanges();
+            }
+            catch(SqlException e)
+            {
+
+            }
         }
 
         public User Find(int? id)
         {
-            throw new NotImplementedException();
+            foreach (var item in ReadAll())
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         public User FindByUsername(string username)
@@ -50,7 +69,22 @@ namespace MVOGames_DAL.Repository
 
         public void Update(User t)
         {
-            throw new NotImplementedException();
+            foreach (var userDB in ctx.Users.ToList())
+            {
+                if (t.Id == userDB.Id)
+                {
+                    userDB.Username = t.Username;
+                    userDB.FirstName = t.FirstName;
+                    userDB.LastName = t.LastName;
+                    userDB.StreetName = t.StreetName;
+                    userDB.HouseNr = t.HouseNr;
+                    userDB.ZipCode = t.ZipCode;
+                    userDB.City = t.City;
+                    userDB.Email = t.Email;
+                    userDB.PasswordHash = t.PasswordHash;
+                    ctx.Users.Attach(userDB);
+                }
+            }
         }
     }
 }

@@ -10,11 +10,8 @@ namespace MVOGames_DAL.Models
 {
     public class PlatformGame
     {
-        [Key]
-        [Column(Order = 1)]
+        public int id { get; set; }
         public int GameId { get; set; }
-        [Key]
-        [Column(Order = 2)]
         public int PlatformId { get; set; }
         public virtual Game Game { get; set; }
         public virtual Platform Platform { get; set; }

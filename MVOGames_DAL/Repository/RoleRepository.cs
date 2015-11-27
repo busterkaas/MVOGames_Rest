@@ -17,17 +17,34 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(Role t)
         {
-            throw new NotImplementedException();
+            ctx.Roles.Add(t);
+            ctx.SaveChanges();
         }
 
         public void Delete(int? id)
         {
-            throw new NotImplementedException();
+            Role role = Find(id);
+            try
+            {
+                ctx.Roles.Attach(role);
+                ctx.Roles.Remove(role);
+                ctx.SaveChanges();
+            }
+            catch
+            {
+            }
         }
 
         public Role Find(int? id)
         {
-            throw new NotImplementedException();
+            foreach (var item in ReadAll())
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         public List<Role> ReadAll()
@@ -37,7 +54,14 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Role t)
         {
-            throw new NotImplementedException();
+            foreach (var rolesDB in ctx.Roles.ToList())
+            {
+                if (t.Id == rolesDB.Id)
+                {
+                    rolesDB.RoleName = t.RoleName;
+                    ctx.Roles.Attach(rolesDB);
+                }
+            }
         }
     }
 }

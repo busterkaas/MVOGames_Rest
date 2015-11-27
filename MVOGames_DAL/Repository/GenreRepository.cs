@@ -17,47 +17,51 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(Genre t)
         {
-            //using (var ctx = new MVOGamesContext())
-            //{
             ctx.Genres.Add(t);
             ctx.SaveChanges();
-            //}
         }
 
         public void Delete(int? id)
         {
-            //Genre genre = FindGenre(id);
-            //try
-            //{
-            //    using (var ctx = new MovieShopContext())
-            //    {
-            //        ctx.Genres.Attach(genre);
-            //        ctx.Genres.Remove(genre);
-            //        ctx.SaveChanges();
-            //    }
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-
-            //}
+            Genre genre = Find(id);
+            try
+            {
+                ctx.Genres.Attach(genre);
+                ctx.Genres.Remove(genre);
+                ctx.SaveChanges();
+            }
+            catch
+            {
+            }
         }
 
         public Genre Find(int? id)
         {
-            throw new NotImplementedException();
+            foreach (var item in ReadAll())
+            {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         public List<Genre> ReadAll()
         {
-            //using (var ctx = new MVOGamesContext())
-            //{
             return ctx.Genres.ToList();
-            //}
         }
 
         public void Update(Genre t)
         {
-            throw new NotImplementedException();
+            foreach (var genreDB in ctx.Genres.ToList())
+            {
+                if (t.Id == genreDB.Id)
+                {
+                    genreDB.Name = t.Name;
+                    ctx.Genres.Attach(genreDB);
+                }
+            }
         }
     }
 }
