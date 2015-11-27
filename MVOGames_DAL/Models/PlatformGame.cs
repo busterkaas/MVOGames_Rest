@@ -10,7 +10,7 @@ namespace MVOGames_DAL.Models
 {
     public class PlatformGame
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public int GameId { get; set; }
         public int PlatformId { get; set; }
         public virtual Game Game { get; set; }
