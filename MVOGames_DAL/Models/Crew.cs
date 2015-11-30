@@ -10,6 +10,7 @@ namespace MVOGames_DAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CrewImgUrl { get; set; }
         public virtual List<User> Users { get; set; }
     }
 }

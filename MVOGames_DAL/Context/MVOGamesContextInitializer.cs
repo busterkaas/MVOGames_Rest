@@ -41,7 +41,7 @@ namespace MVOGames_DAL.Context
             user.SetPassword("buster");
             User user2 = new User
             {
-                Username = "shane",
+                Username = "ReCKoH",
                 City = "Oslo",
                 Email = "shalle@gmail.com",
                 FirstName = "Shane",
@@ -56,7 +56,7 @@ namespace MVOGames_DAL.Context
             context.Users.Add(user);
             context.Users.Add(user2);
 
-            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", Users = new List<User>() { user2 } });
+            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "",Users = new List<User>() { user2 } });
 
             IList<Game> games = new List<Game>();
 
@@ -65,7 +65,7 @@ namespace MVOGames_DAL.Context
                 Title = "GTA V",
                 ReleaseDate = new DateTime(2014, 09, 28),
                 //Price = 150,
-                CoverUrl = "http://blog.moviepostershop.com/wp-content/uploads/2011/03/Thor-movie-poster.jpg",
+                CoverUrl = "http://media.rockstargames.com/rockstargames/img/global/news/upload/actual_1364906194.jpg",
                 TrailerUrl = "https://www.youtube.com/embed/JOddp-nlNvQ",
 
                 Genres = new List<Genre>() { genre2 },
@@ -76,7 +76,7 @@ namespace MVOGames_DAL.Context
                 Title = "Rainbow Six - Siege",
                 ReleaseDate = new DateTime(2015, 01, 28),
                 //Price = 150,
-                CoverUrl = "http://blog.moviepostershop.com/wp-content/uploads/2011/03/Thor-movie-poster.jpg",
+                CoverUrl = "https://upload.wikimedia.org/wikipedia/en/4/47/Tom_Clancy%27s_Rainbow_Six_Siege_cover_art.jpg",
                 TrailerUrl = "https://www.youtube.com/embed/JOddp-nlNvQ",
 
                 Genres = new List<Genre>() { genre2, genre1 },

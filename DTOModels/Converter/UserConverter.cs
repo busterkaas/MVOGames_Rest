@@ -24,7 +24,8 @@ namespace DTOModels.Converter
                 PasswordHash = item.PasswordHash,
                 RoleId = item.RoleId,
                 StreetName = item.StreetName,
-                ZipCode = item.ZipCode
+                ZipCode = item.ZipCode,
+                Role = new RoleConverter().Convert(item.Role)
             };
             return userDTO;
             
@@ -44,7 +45,8 @@ namespace DTOModels.Converter
                 PasswordHash = item.PasswordHash,
                 RoleId = item.RoleId,
                 StreetName = item.StreetName,
-                ZipCode = item.ZipCode
+                ZipCode = item.ZipCode,
+                Role = new RoleConverter().Reverse(item.Role)
             };
             return user;
         }

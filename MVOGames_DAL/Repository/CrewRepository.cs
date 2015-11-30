@@ -59,6 +59,7 @@ namespace MVOGames_DAL.Repository
                 if (t.Id == crewDB.Id)
                 {
                     crewDB.Name = t.Name;
+                    crewDB.CrewImgUrl = t.CrewImgUrl;
                     ctx.Crews.Attach(crewDB);
                 }
             }

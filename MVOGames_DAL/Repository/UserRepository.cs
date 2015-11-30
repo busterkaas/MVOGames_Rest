@@ -64,7 +64,7 @@ namespace MVOGames_DAL.Repository
 
         public List<User> ReadAll()
         {
-            return ctx.Users.Include("Crews").ToList();
+            return ctx.Users.Include("Crews").Include("Role").ToList();
         }
 
         public void Update(User t)

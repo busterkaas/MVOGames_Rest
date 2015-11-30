@@ -10,6 +10,7 @@ namespace DTOModels.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual List<UserDTO> Users { get; set; }
+        public string CrewImgUrl { get; set; }
+        public List<UserDTO> Users { get; set; }
     }
 }

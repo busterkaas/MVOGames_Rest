@@ -15,7 +15,8 @@ namespace DTOModels.Converter
             var crewDTO = new CrewDTO()
             {
                 Id = item.Id,
-                Name = item.Name
+                Name = item.Name,
+                CrewImgUrl = item.CrewImgUrl
             };
             if (item.Users != null)
             {
@@ -33,7 +34,8 @@ namespace DTOModels.Converter
             var crew = new Crew()
             {
                 Id = item.Id,
-                Name = item.Name
+                Name = item.Name,
+                CrewImgUrl = item.CrewImgUrl
             };
             if (item.Users != null)
             {

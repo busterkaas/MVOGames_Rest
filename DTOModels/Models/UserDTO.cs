@@ -19,8 +19,8 @@ namespace DTOModels.Models
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public int RoleId { get; set; }
+        public RoleDTO Role { get; set; }
+        //public List<CrewDTO> Crews { get; set; }
 
-        //public virtual List<Crew> Crews { get; set; }
-        
     }
 }
