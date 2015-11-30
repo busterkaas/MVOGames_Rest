@@ -71,7 +71,9 @@
     <Compile Include="Repository\GameRepository.cs" />
     <Compile Include="Repository\GenreRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\OrderlinesRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
+    <Compile Include="Repository\PlatformGameRepository.cs" />
     <Compile Include="Repository\PlatformRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
