@@ -23,8 +23,6 @@ namespace MVOGames_DAL.Context
             Role role1 = context.Roles.Add(new Role() { Id = 1, RoleName = "admin" });
             Role role2 = context.Roles.Add(new Role() { Id = 2, RoleName = "user" });
 
-
-
             User user = new User
             {
                 Username = "buster",
@@ -53,10 +51,26 @@ namespace MVOGames_DAL.Context
                 Role = role2
             };
             user2.SetPassword("shane");
+            User user3 = new User
+            {
+                Username = "Mikki",
+                City = "Flensburg",
+                Email = "mille@gmail.com",
+                FirstName = "Mike",
+                LastName = "Jensen",
+                HouseNr = "23",
+                StreetName = "Flensburg Allé",
+                ZipCode = 1232,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+           
+            user3.SetPassword("Mikki");
             context.Users.Add(user);
             context.Users.Add(user2);
+            context.Users.Add(user3);
 
-            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "",Users = new List<User>() { user2 } });
+            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "",Users = new List<User>() { user2, user3 }, CrewLeaderId = 2});
 
             IList<Game> games = new List<Game>();
 

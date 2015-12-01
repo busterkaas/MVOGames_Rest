@@ -31,7 +31,7 @@ namespace MVOGames_DAL.Repository
                 ctx.Users.Remove(user);
                 ctx.SaveChanges();
             }
-            catch(SqlException e)
+            catch(SqlException)
             {
 
             }

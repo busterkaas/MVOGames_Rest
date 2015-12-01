@@ -60,6 +60,7 @@ namespace MVOGames_DAL.Repository
                 {
                     crewDB.Name = t.Name;
                     crewDB.CrewImgUrl = t.CrewImgUrl;
+                    crewDB.CrewLeaderId = t.CrewLeaderId;
                     ctx.Crews.Attach(crewDB);
                 }
             }

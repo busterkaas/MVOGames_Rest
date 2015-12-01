@@ -28,8 +28,7 @@ namespace DTOModels.Converter
                         Id = orderline.Id,
                         Discount = orderline.Discount,
                         OrderId = orderline.OrderId,
-                        GameId = orderline.GameId
-                       
+                        PlatformGameId = orderline.PlatformGameId
                     });
                 }
             }
@@ -54,7 +53,7 @@ namespace DTOModels.Converter
                         Id = orderline.Id,
                         Discount = orderline.Discount,
                         OrderId = orderline.OrderId,
-                        GameId = orderline.GameId
+                        PlatformGameId = orderline.PlatformGameId
 
                     });
                 }

@@ -20,10 +20,6 @@ namespace MVOGames_DAL.Models
         [DataType(DataType.Date)]
         [Required]
         public DateTime ReleaseDate { get; set; }
-        //[Required(ErrorMessage = "Price is required")]
-        //[Range(1.00, 999.00,
-        //    ErrorMessage = "Price must be between 1.00 and 3999.00")]
-        //public decimal Price { get; set; }
         public string CoverUrl { get; set; }
         public string TrailerUrl { get; set; }
         public string Description { get; set; }

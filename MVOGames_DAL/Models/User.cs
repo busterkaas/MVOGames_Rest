@@ -12,6 +12,7 @@ namespace MVOGames_DAL.Models
         public User()
         {
             Crews = new List<Crew>();
+            Applications = new List<CrewApplication>();
         }
         private const int WorkFactor = 13;
         public int Id { get; set; }
@@ -52,5 +53,7 @@ namespace MVOGames_DAL.Models
         public virtual Role Role { get; set; }
 
         public int  RoleId { get; set; }
+
+        public virtual List<CrewApplication> Applications { get; set; } 
     }
 }

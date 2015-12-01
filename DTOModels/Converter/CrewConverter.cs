@@ -16,7 +16,8 @@ namespace DTOModels.Converter
             {
                 Id = item.Id,
                 Name = item.Name,
-                CrewImgUrl = item.CrewImgUrl
+                CrewImgUrl = item.CrewImgUrl,
+                CrewLeaderId = item.CrewLeaderId
             };
             if (item.Users != null)
             {
@@ -35,7 +36,8 @@ namespace DTOModels.Converter
             {
                 Id = item.Id,
                 Name = item.Name,
-                CrewImgUrl = item.CrewImgUrl
+                CrewImgUrl = item.CrewImgUrl,
+                CrewLeaderId = item.CrewLeaderId
             };
             if (item.Users != null)
             {

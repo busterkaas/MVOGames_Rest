@@ -11,6 +11,8 @@ namespace DTOModels.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string CrewImgUrl { get; set; }
+        public int CrewLeaderId { get; set; }
+        //public UserDTO CrewLeader { get; set; }
         public List<UserDTO> Users { get; set; }
     }
 }

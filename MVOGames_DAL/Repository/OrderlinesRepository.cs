@@ -55,7 +55,7 @@ namespace MVOGames_DAL.Repository
                 {
                     orderlineDB.Amount = t.Amount;
                     orderlineDB.Discount = t.Discount;
-                    orderlineDB.GameId = t.GameId;
+                    orderlineDB.PlatformGameId = t.PlatformGameId;
                     orderlineDB.OrderId = t.OrderId;
                     ctx.Orderlines.Attach(orderlineDB);
                 }
