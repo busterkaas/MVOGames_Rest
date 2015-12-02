@@ -8,6 +8,7 @@ namespace DTOModels.Models
 {
     public class PlatformGameDTO
     {
+        public int Id { get; set; }
         public int GameId { get; set; }
         public GameDTO Game { get; set; }
         public int PlatformId { get; set; }

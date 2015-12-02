@@ -14,6 +14,7 @@ namespace DTOModels.Converter
         {
             var platformGameDTO = new PlatformGameDTO()
             {
+                Id = item.Id,
                 GameId = item.GameId,
                 PlatformId = item.PlatformId,
                 Game = new GameConverter().Convert(item.Game),
@@ -28,6 +29,7 @@ namespace DTOModels.Converter
         {
             var platformGame = new PlatformGame()
             {
+                Id = item.Id,
                 GameId = item.GameId,
                 PlatformId = item.PlatformId,
                 Game = new GameConverter().Reverse(item.Game),

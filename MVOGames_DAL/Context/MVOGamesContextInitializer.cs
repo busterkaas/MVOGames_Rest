@@ -103,10 +103,16 @@ namespace MVOGames_DAL.Context
             }
 
             PlatformGame pg =
-                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 1, Price = 400, Stock = 20 });
+                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 1, Price = 499, Stock = 20 });
             PlatformGame pg1 =
-                context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 300, Stock = 15 });
-
+                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 2, Price = 499, Stock = 15 });
+            PlatformGame pg2 =
+              context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 3, Price = 400, Stock = 0 });
+            PlatformGame pg3 =
+                context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 1, Price = 549, Stock = 15 });
+            PlatformGame pg4 =
+              context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 549, Stock = 0 });
+            
             base.Seed(context);
 
 
