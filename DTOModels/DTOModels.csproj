@@ -47,6 +47,7 @@
     <Compile Include="Converter\GenreConverter.cs" />
     <Compile Include="Converter\OrderConverter.cs" />
     <Compile Include="Converter\PlatformConverter.cs" />
+    <Compile Include="Converter\PlatformGameConverter.cs" />
     <Compile Include="Converter\RoleConverter.cs" />
     <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="Models\CrewApplicationDTO.cs" />
