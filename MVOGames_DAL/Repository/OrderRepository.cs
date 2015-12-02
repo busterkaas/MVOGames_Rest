@@ -13,9 +13,9 @@ namespace MVOGames_DAL.Repository
     {
         private MVOGamesContext ctx;
 
-        public OrderRepository()
+        public OrderRepository(MVOGamesContext context)
         {
-            ctx = new MVOGamesContext();
+            ctx = context;
         }
 
         public void Add(Order t)

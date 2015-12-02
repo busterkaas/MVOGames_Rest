@@ -8,7 +8,7 @@ using MVOGames_DAL.Models;
 
 namespace DTOModels.Converter
 {
-    class PlatformGameConverter : AbstractDTOConverter<PlatformGame, PlatformGameDTO>
+    public class PlatformGameConverter : AbstractDTOConverter<PlatformGame, PlatformGameDTO>
     {
         public override PlatformGameDTO Convert(PlatformGame item)
         {
