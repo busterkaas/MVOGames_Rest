@@ -70,7 +70,7 @@ namespace MVOGames_DAL.Context
             context.Users.Add(user2);
             context.Users.Add(user3);
 
-            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "",Users = new List<User>() { user2, user3 }, CrewLeaderId = 2});
+            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "http://prod.cloud.rockstargames.com/crews/sc/1510/10088/publish/emblem/emblem_128.png", Users = new List<User>() { user2, user3 }, CrewLeaderId = 2});
 
             IList<Game> games = new List<Game>();
 
@@ -105,13 +105,13 @@ namespace MVOGames_DAL.Context
             PlatformGame pg =
                 context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 1, Price = 499, Stock = 20 });
             PlatformGame pg1 =
-                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 2, Price = 499, Stock = 15 });
+                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 2, Price = 469, Stock = 15 });
             PlatformGame pg2 =
               context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 3, Price = 400, Stock = 0 });
             PlatformGame pg3 =
                 context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 1, Price = 549, Stock = 15 });
             PlatformGame pg4 =
-              context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 549, Stock = 0 });
+              context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
             
             base.Seed(context);
 

@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class UsersController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private UserConverter gc = new UserConverter();
+        private UserConverter converter = new UserConverter();
 
         // GET: api/Users
         public IEnumerable<UserDTO> GetUsers()
         {
             var users = facade.GetUserRepository().ReadAll();
-            var usersDTO = gc.Convert(users);
+            var usersDTO = converter.Convert(users);
             return usersDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetUser(int id)
         {
             User user = facade.GetUserRepository().Find(id);
-            var userDTO = gc.Convert(user);
+            var userDTO = converter.Convert(user);
             if (user == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetUserRepository().Update(gc.Reverse(user));
+            facade.GetUserRepository().Update(converter.Reverse(user));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetUserRepository().Add(gc.Reverse(user));
+            facade.GetUserRepository().Add(converter.Reverse(user));
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteUser(int id)
         {
             User user = facade.GetUserRepository().Find(id);
-            var userDTO = gc.Convert(user);
+            var userDTO = converter.Convert(user);
             if (user == null)
             {
                 return NotFound();

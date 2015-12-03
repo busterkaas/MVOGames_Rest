@@ -18,13 +18,13 @@ namespace MVOGames_Rest.Controllers
     public class GamesController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private GameConverter gc = new GameConverter();
+        private GameConverter converter = new GameConverter();
 
         // GET: api/Games
         public IEnumerable<GameDTO> GetGames()
         {
             var games = facade.GetGameRepository().ReadAll();
-            var gamesDTO = gc.Convert(games);
+            var gamesDTO = converter.Convert(games);
             return gamesDTO;
         }
 
@@ -33,7 +33,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetGame(int id)
         {
             Game game = facade.GetGameRepository().Find(id);
-            var gameDTO = gc.Convert(game);
+            var gameDTO = converter.Convert(game);
             if (game == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetGameRepository().Update(gc.Reverse(game));
+            facade.GetGameRepository().Update(converter.Reverse(game));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -68,7 +68,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetGameRepository().Add(gc.Reverse(game));
+            facade.GetGameRepository().Add(converter.Reverse(game));
             return CreatedAtRoute("DefaultApi", new { id = game.Id }, game);
         }
 
@@ -77,7 +77,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteGame(int id)
         {
             Game game = facade.GetGameRepository().Find(id);
-            var gameDTO = gc.Convert(game);
+            var gameDTO = converter.Convert(game);
             if (game == null)
             {
                 return NotFound();

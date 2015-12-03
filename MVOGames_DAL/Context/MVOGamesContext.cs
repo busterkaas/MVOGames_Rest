@@ -32,5 +32,6 @@ namespace MVOGames_DAL.Context
         public System.Data.Entity.DbSet<Orderline> Orderlines { get; set; }
         public System.Data.Entity.DbSet<PlatformGame> PlatformGames { get; set; }
         public System.Data.Entity.DbSet<CrewApplication> CrewApplications { get; set; }
+        public System.Data.Entity.DbSet<CrewGameSuggestion> CrewGameSuggestions { get; set; }
     }
 }

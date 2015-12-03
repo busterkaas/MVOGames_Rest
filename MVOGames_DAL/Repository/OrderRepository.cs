@@ -9,7 +9,7 @@ using MVOGames_DAL.Models;
 
 namespace MVOGames_DAL.Repository
 {
-    class OrderRepository : IRepository<Order>
+    public class OrderRepository : IRepository<Order>
     {
         private MVOGamesContext ctx;
 

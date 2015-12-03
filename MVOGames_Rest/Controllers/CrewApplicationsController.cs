@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class CrewApplicationsController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private CrewApplicationConverter gc = new CrewApplicationConverter();
+        private CrewApplicationConverter converter = new CrewApplicationConverter();
 
         // GET: api/Crews
         public IEnumerable<CrewApplicationDTO> GetCrews()
         {
             var crewApplications = facade.GetCrewApplicationRepository().ReadAll();
-            var crewApplicationDTOs = gc.Convert(crewApplications);
+            var crewApplicationDTOs = converter.Convert(crewApplications);
             return crewApplicationDTOs;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetCrew(int id)
         {
             CrewApplication crewApplication = facade.GetCrewApplicationRepository().Find(id);
-            var crewApplicationDTO = gc.Convert(crewApplication);
+            var crewApplicationDTO = converter.Convert(crewApplication);
             if (crewApplication == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetCrewApplicationRepository().Update(gc.Reverse(crewApplicationDTO));
+            facade.GetCrewApplicationRepository().Update(converter.Reverse(crewApplicationDTO));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetCrewApplicationRepository().Add(gc.Reverse(crewApplication));
+            facade.GetCrewApplicationRepository().Add(converter.Reverse(crewApplication));
             return CreatedAtRoute("DefaultApi", new { id = crewApplication.Id }, crewApplication);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteCrew(int id)
         {
             CrewApplication crewApplication = facade.GetCrewApplicationRepository().Find(id);
-            var crewApplicationDTO = gc.Convert(crewApplication);
+            var crewApplicationDTO = converter.Convert(crewApplication);
             if (crewApplication == null)
             {
                 return NotFound();

@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class CrewsController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private CrewConverter gc = new CrewConverter();
+        private CrewConverter converter = new CrewConverter();
 
         // GET: api/Crews
         public IEnumerable<CrewDTO> GetCrews()
         {
             var crews = facade.GetCrewRepository().ReadAll();
-            var crewsDTO = gc.Convert(crews);
+            var crewsDTO = converter.Convert(crews);
             return crewsDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetCrew(int id)
         {
             Crew crew = facade.GetCrewRepository().Find(id);
-            var crewDTO = gc.Convert(crew);
+            var crewDTO = converter.Convert(crew);
             if (crew == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetCrewRepository().Update(gc.Reverse(crew));
+            facade.GetCrewRepository().Update(converter.Reverse(crew));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetCrewRepository().Add(gc.Reverse(crew));
+            facade.GetCrewRepository().Add(converter.Reverse(crew));
             return CreatedAtRoute("DefaultApi", new { id = crew.Id }, crew);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteCrew(int id)
         {
             Crew crew = facade.GetCrewRepository().Find(id);
-            var crewDTO = gc.Convert(crew);
+            var crewDTO = converter.Convert(crew);
             if (crew == null)
             {
                 return NotFound();

@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class GenresController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private GenreConverter gc = new GenreConverter();
+        private GenreConverter converter = new GenreConverter();
 
         // GET: api/Genres
         public IEnumerable<GenreDTO> GetGenres()
         {
             var genres = facade.GetGenreRepository().ReadAll();
-            var genresDTO = gc.Convert(genres);
+            var genresDTO = converter.Convert(genres);
             return genresDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetGenre(int id)
         {
             Genre genre = facade.GetGenreRepository().Find(id);
-            var genreDTO = gc.Convert(genre);
+            var genreDTO = converter.Convert(genre);
             if (genre == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetGenreRepository().Update(gc.Reverse(genre));
+            facade.GetGenreRepository().Update(converter.Reverse(genre));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetGenreRepository().Add(gc.Reverse(genre));
+            facade.GetGenreRepository().Add(converter.Reverse(genre));
             return CreatedAtRoute("DefaultApi", new { id = genre.Id }, genre);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteGenre(int id)
         {
             Genre genre = facade.GetGenreRepository().Find(id);
-            var genreDTO = gc.Convert(genre);
+            var genreDTO = converter.Convert(genre);
             if (genre == null)
             {
                 return NotFound();

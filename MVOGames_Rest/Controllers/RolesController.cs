@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class RolesController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private RoleConverter gc = new RoleConverter();
+        private RoleConverter converter = new RoleConverter();
 
         // GET: api/Roles
         public IEnumerable<RoleDTO> GetRoles()
         {
             var roles = facade.GetRoleRepository().ReadAll();
-            var rolesDTO = gc.Convert(roles);
+            var rolesDTO = converter.Convert(roles);
             return rolesDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetRole(int id)
         {
             Role role = facade.GetRoleRepository().Find(id);
-            var roleDTO = gc.Convert(role);
+            var roleDTO = converter.Convert(role);
             if (role == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetRoleRepository().Update(gc.Reverse(role));
+            facade.GetRoleRepository().Update(converter.Reverse(role));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetRoleRepository().Add(gc.Reverse(role));
+            facade.GetRoleRepository().Add(converter.Reverse(role));
             return CreatedAtRoute("DefaultApi", new { id = role.Id }, role);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeleteRole(int id)
         {
             Role role = facade.GetRoleRepository().Find(id);
-            var roleDTO = gc.Convert(role);
+            var roleDTO = converter.Convert(role);
             if (role == null)
             {
                 return NotFound();

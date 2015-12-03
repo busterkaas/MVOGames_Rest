@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class PlatformsController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private PlatformConverter gc = new PlatformConverter();
+        private PlatformConverter converter = new PlatformConverter();
 
         // GET: api/Platforms
         public IEnumerable<PlatformDTO> GetPlatforms()
         {
             var platforms = facade.GetPlatformRepository().ReadAll();
-            var platformsDTO = gc.Convert(platforms);
+            var platformsDTO = converter.Convert(platforms);
             return platformsDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetPlatform(int id)
         {
             Platform platform = facade.GetPlatformRepository().Find(id);
-            var platformDTO = gc.Convert(platform);
+            var platformDTO = converter.Convert(platform);
             if (platform == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetPlatformRepository().Update(gc.Reverse(platform));
+            facade.GetPlatformRepository().Update(converter.Reverse(platform));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -65,7 +65,7 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            facade.GetPlatformRepository().Add(gc.Reverse(platform));
+            facade.GetPlatformRepository().Add(converter.Reverse(platform));
             return CreatedAtRoute("DefaultApi", new { id = platform.Id }, platform);
         }
 
@@ -74,7 +74,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult DeletePlatform(int id)
         {
             Platform platform = facade.GetPlatformRepository().Find(id);
-            var platformDTO = gc.Convert(platform);
+            var platformDTO = converter.Convert(platform);
             if (platform == null)
             {
                 return NotFound();

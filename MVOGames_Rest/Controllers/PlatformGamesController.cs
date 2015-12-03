@@ -15,13 +15,13 @@ namespace MVOGames_Rest.Controllers
     public class PlatformGamesController : ApiController
     {
         private DALFacade facade = new DALFacade();
-        private PlatformGameConverter pgc = new PlatformGameConverter();
+        private PlatformGameConverter converter = new PlatformGameConverter();
 
         // GET: api/Genres
         public IEnumerable<PlatformGameDTO> GetPlatformGames()
         {
             var platformgames = facade.GetPlatformGameRepository().ReadAll().ToList();
-            var platformgamesDTO = pgc.Convert(platformgames);
+            var platformgamesDTO = converter.Convert(platformgames);
             return platformgamesDTO;
         }
 
@@ -30,7 +30,7 @@ namespace MVOGames_Rest.Controllers
         public IHttpActionResult GetPlatformGame(int id)
         {
             PlatformGame platformgame = facade.GetPlatformGameRepository().Find(id);
-            var platformgamesDTO = pgc.Convert(platformgame);
+            var platformgamesDTO = converter.Convert(platformgame);
             if (platformgamesDTO == null)
             {
                 return NotFound();

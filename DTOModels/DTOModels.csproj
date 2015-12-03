@@ -43,6 +43,7 @@
     <Compile Include="Converter\AbstractDTOConverter.cs" />
     <Compile Include="Converter\CrewApplicationConverter.cs" />
     <Compile Include="Converter\CrewConverter.cs" />
+    <Compile Include="Converter\CrewGameSuggestionConverter.cs" />
     <Compile Include="Converter\GameConverter.cs" />
     <Compile Include="Converter\GenreConverter.cs" />
     <Compile Include="Converter\OrderConverter.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="Models\CrewApplicationDTO.cs" />
     <Compile Include="Models\CrewDTO.cs" />
+    <Compile Include="Models\CrewGameSuggestionDTO.cs" />
     <Compile Include="Models\GameDTO.cs" />
     <Compile Include="Models\GenreDTO.cs" />
     <Compile Include="Models\OrderDTO.cs" />
