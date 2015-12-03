@@ -69,22 +69,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(User t)
         {
-            foreach (var userDB in ctx.Users.ToList())
-            {
-                if (t.Id == userDB.Id)
-                {
-                    userDB.Username = t.Username;
-                    userDB.FirstName = t.FirstName;
-                    userDB.LastName = t.LastName;
-                    userDB.StreetName = t.StreetName;
-                    userDB.HouseNr = t.HouseNr;
-                    userDB.ZipCode = t.ZipCode;
-                    userDB.City = t.City;
-                    userDB.Email = t.Email;
-                    userDB.PasswordHash = t.PasswordHash;
-                    ctx.Users.Attach(userDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

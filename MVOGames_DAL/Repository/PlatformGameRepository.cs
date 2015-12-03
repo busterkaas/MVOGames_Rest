@@ -51,17 +51,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(PlatformGame t)
         {
-            foreach (var platformgamesDB in ctx.PlatformGames.ToList())
-            {
-                if (t.Id == platformgamesDB.Id)
-                {
-                    platformgamesDB.Price = t.Price;
-                    platformgamesDB.Stock = t.Stock;
-                    platformgamesDB.GameId = t.GameId;
-                    platformgamesDB.PlatformId = t.PlatformId;
-                    ctx.PlatformGames.Attach(platformgamesDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

@@ -56,19 +56,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(CrewGameSuggestion t)
         {
-            foreach (var crewGameSuggestionDB in ctx.CrewGameSuggestions.ToList())
-            {
-                if (t.Id == crewGameSuggestionDB.Id)
-                {
-                    crewGameSuggestionDB.CrewId = t.CrewId;
-                    crewGameSuggestionDB.PlatformGameId = t.PlatformGameId;
-                    crewGameSuggestionDB.OrderId = t.OrderId;
-                    crewGameSuggestionDB.Discount = t.Discount;
-                    crewGameSuggestionDB.ExpirationTime = t.ExpirationTime;
-                    
-                    ctx.CrewGameSuggestions.Attach(crewGameSuggestionDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

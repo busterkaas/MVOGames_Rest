@@ -49,17 +49,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Orderline t)
         {
-            foreach (var orderlineDB in ctx.Orderlines.ToList())
-            {
-                if (t.Id == orderlineDB.Id)
-                {
-                    orderlineDB.Amount = t.Amount;
-                    orderlineDB.Discount = t.Discount;
-                    orderlineDB.PlatformGameId = t.PlatformGameId;
-                    orderlineDB.OrderId = t.OrderId;
-                    ctx.Orderlines.Attach(orderlineDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

@@ -72,22 +72,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Order t)
         {
-            try
-            {
-                foreach (var orderDB in ctx.Orders.ToList())
-                {
-                    if (t.Id == orderDB.Id)
-                    {
-                        orderDB.User = t.User;
-                        orderDB.Date = t.Date;
-                        ctx.Orders.Attach(orderDB);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

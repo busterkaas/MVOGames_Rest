@@ -54,14 +54,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Genre t)
         {
-            foreach (var genreDB in ctx.Genres.ToList())
-            {
-                if (t.Id == genreDB.Id)
-                {
-                    genreDB.Name = t.Name;
-                    ctx.Genres.Attach(genreDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

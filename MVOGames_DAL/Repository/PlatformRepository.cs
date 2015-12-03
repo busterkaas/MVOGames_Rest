@@ -55,14 +55,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Platform t)
         {
-            foreach (var platformDB in ctx.Platforms.ToList())
-            {
-                if (t.Id == platformDB.Id)
-                {
-                    platformDB.Name = t.Name;
-                    ctx.Platforms.Attach(platformDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

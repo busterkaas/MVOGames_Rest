@@ -64,19 +64,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Game t)
         {
-            foreach (var gameDB in ctx.Games.ToList())
-            {
-                if (t.Id == gameDB.Id)
-                {
-                    gameDB.Title = t.Title;
-                    gameDB.ReleaseDate = t.ReleaseDate;
-                    gameDB.TrailerUrl = t.TrailerUrl;
-                    gameDB.CoverUrl = t.CoverUrl;
-                    gameDB.Description = t.Description;
-                    gameDB.Genres = t.Genres;
-                    ctx.Games.Attach(gameDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

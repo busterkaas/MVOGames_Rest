@@ -54,16 +54,8 @@ namespace MVOGames_DAL.Repository
 
         public void Update(CrewApplication t)
         {
-            foreach (var crewApplicationDB in ctx.CrewApplications.ToList())
-            {
-                if (t.Id == crewApplicationDB.Id)
-                {
-
-                    crewApplicationDB.CrewId = t.CrewId;
-                    crewApplicationDB.UserId = t.UserId;
-                    ctx.CrewApplications.Attach(crewApplicationDB);
-                }
-            }
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }
