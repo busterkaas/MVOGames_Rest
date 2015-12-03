@@ -39,7 +39,7 @@ namespace MVOGames_DAL.Context
             user.SetPassword("buster");
             User user2 = new User
             {
-                Username = "ReCKoH",
+                Username = "shane",
                 City = "Oslo",
                 Email = "shalle@gmail.com",
                 FirstName = "Shane",
