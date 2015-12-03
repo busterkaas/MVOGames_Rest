@@ -18,7 +18,8 @@ namespace MVOGames_DAL
         private UserRepository userRepo;
         private IRepository<Role> roleRepo;
         private IRepository<Platform> platformRepo;
-        private IRepository<CrewApplication> crewApplicationRepo; 
+        private IRepository<CrewApplication> crewApplicationRepo;
+        private IRepository<PlatformGame> platformGameRepo; 
 
         public DALFacade()
         {
@@ -52,6 +53,10 @@ namespace MVOGames_DAL
         public IRepository<CrewApplication> GetCrewApplicationRepository()
         {
             return crewApplicationRepo ?? (crewApplicationRepo = new CrewApplicationRepository(ctx));
+        }
+        public IRepository<PlatformGame> GetPlatformGameRepository()
+        {
+            return platformGameRepo ?? (platformGameRepo = new PlatformGameRepository(ctx));
         }
     }
 }

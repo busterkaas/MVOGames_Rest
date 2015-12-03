@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,12 @@ using MVOGames_DAL.Models;
 
 namespace MVOGames_DAL.Repository
 {
-    class PlatformGameRepository : IRepository<PlatformGame>
+    public class PlatformGameRepository : IRepository<PlatformGame>
     {
         private MVOGamesContext ctx;
-        public PlatformGameRepository()
+        public PlatformGameRepository(MVOGamesContext context)
         {
-            ctx = new MVOGamesContext();
+            ctx = context;
         }
 
         public void Add(PlatformGame t)

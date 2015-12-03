@@ -11,9 +11,9 @@ namespace MVOGames_DAL.Repository
     class OrderlinesRepository : IRepository<Orderline>
     {
         private MVOGamesContext ctx;
-        public OrderlinesRepository()
+        public OrderlinesRepository(MVOGamesContext context)
         {
-            ctx = new MVOGamesContext();
+            ctx = context;
         }
         public void Add(Orderline t)
         {
