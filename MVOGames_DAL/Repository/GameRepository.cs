@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
 using MVOGames_DAL.Models;
+using System.Data.Entity;
 
 namespace MVOGames_DAL.Repository
 {
@@ -18,6 +19,7 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(Game t)
         {
+            t.Genres.ForEach(x => ctx.Entry(x).State = EntityState.Unchanged);
             ctx.Games.Add(t);
             ctx.SaveChanges();
         }
