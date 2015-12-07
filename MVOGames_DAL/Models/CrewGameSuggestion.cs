@@ -13,11 +13,8 @@ namespace MVOGames_DAL.Models
         public virtual Crew Crew { get; set; }
         public int PlatformGameId { get; set; }
         public virtual PlatformGame PlatformGame { get; set; }
-        public int OrderId { get; set; }
-        public virtual Order Order { get; set; }
         public decimal Discount { get; set; }
         public DateTime ExpirationTime { get; set; }
-        public virtual List<User> ConfirmedUsers { get; set; }
 
     }
 }

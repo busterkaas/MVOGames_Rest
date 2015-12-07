@@ -41,7 +41,7 @@ namespace MVOGames_Rest.Controllers
 
         // PUT: api/Roles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRole(int id, RoleDTO role)
+        public IHttpActionResult PutRole(int id, Role role)
         {
             if (!ModelState.IsValid)
             {
@@ -52,36 +52,36 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetRoleRepository().Update(converter.Reverse(role));
+            facade.GetRoleRepository().Update(role);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Roles
-        [ResponseType(typeof(RoleDTO))]
-        public IHttpActionResult PostRole(RoleDTO role)
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult PostRole(Role role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            facade.GetRoleRepository().Add(converter.Reverse(role));
+            facade.GetRoleRepository().Add(role);
             return CreatedAtRoute("DefaultApi", new { id = role.Id }, role);
         }
 
         // DELETE: api/Roles/5
-        [ResponseType(typeof(RoleDTO))]
+        [ResponseType(typeof(Role))]
         public IHttpActionResult DeleteRole(int id)
         {
             Role role = facade.GetRoleRepository().Find(id);
-            var roleDTO = converter.Convert(role);
+           
             if (role == null)
             {
                 return NotFound();
             }
             facade.GetRoleRepository().Delete(id);
             
-            return Ok(roleDTO);
+            return Ok(role);
         }
 
     }

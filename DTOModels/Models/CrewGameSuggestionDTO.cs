@@ -13,10 +13,7 @@ namespace DTOModels.Models
         public CrewDTO Crew { get; set; }
         public int PlatformGameId { get; set; }
         public PlatformGameDTO PlatformGame { get; set; }
-        public int OrderId { get; set; }
-        public OrderDTO Order { get; set; }
         public decimal Discount { get; set; }
         public DateTime ExpirationTime { get; set; }
-        //public List<UserDTO> ConfirmedUsers { get; set; }
     }
 }
