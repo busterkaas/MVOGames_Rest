@@ -12,7 +12,7 @@ using System.Web.Http.Description;
 
 namespace MVOGames_Rest.Controllers
 {
-    public class OrderController : ApiController
+    public class OrdersController : ApiController
     {
         private DALFacade facade = new DALFacade();
         private OrderConverter converter = new OrderConverter();
