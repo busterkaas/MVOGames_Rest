@@ -19,8 +19,6 @@ namespace DTOModels.Converter
                 Crew = new CrewConverter().Convert(item.Crew),
                 PlatformGameId = item.PlatformGameId,
                 PlatformGame = new PlatformGameConverter().Convert(item.PlatformGame),
-                OrderId = item.OrderId,
-                Order = new OrderConverter().Convert(item.Order),
                 ExpirationTime = item.ExpirationTime,
                 Discount = item.Discount,
             };
@@ -44,8 +42,6 @@ namespace DTOModels.Converter
                 Crew = new CrewConverter().Reverse(item.Crew),
                 PlatformGameId = item.PlatformGameId,
                 PlatformGame = new PlatformGameConverter().Reverse(item.PlatformGame),
-                OrderId = item.OrderId,
-                Order = new OrderConverter().Reverse(item.Order),
                 ExpirationTime = item.ExpirationTime,
                 Discount = item.Discount,
             };

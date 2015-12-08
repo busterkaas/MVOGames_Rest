@@ -50,6 +50,7 @@
     <Compile Include="Converter\PlatformConverter.cs" />
     <Compile Include="Converter\PlatformGameConverter.cs" />
     <Compile Include="Converter\RoleConverter.cs" />
+    <Compile Include="Converter\SuggestionUsersConverter.cs" />
     <Compile Include="Converter\UserConverter.cs" />
     <Compile Include="Models\CrewApplicationDTO.cs" />
     <Compile Include="Models\CrewDTO.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Models\PlatformDTO.cs" />
     <Compile Include="Models\PlatformGameDTO.cs" />
     <Compile Include="Models\RoleDTO.cs" />
+    <Compile Include="Models\SuggestionUsersDTO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
