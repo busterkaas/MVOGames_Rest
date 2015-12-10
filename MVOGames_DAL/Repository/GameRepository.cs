@@ -70,25 +70,28 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Game t)
         {
-            ctx.Entry(t).State = EntityState.Modified;
+            var original = ctx.Games.Include(j => j.Genres)
+               .Single(j => j.Id == t.Id);
 
-            foreach (var item in t.Genres)
+            // Update scalar/complex properties
+            ctx.Entry(original).CurrentValues.SetValues(t);
+
+            // Update reference
+            original.Genres.Clear();
+
+            foreach (var genre in t.Genres)
             {
-                ctx.Entry(item).State = EntityState.Modified;
+                //ctx.Users.Attach(user);
+                original.Genres.Add(ctx.Genres.FirstOrDefault(x => x.Id == genre.Id));
 
+                //ctx.Entry(t).State = EntityState.Modified;
+
+                //foreach (var item in t.Genres)
+                //{
+                //    ctx.Entry(item).State = EntityState.Modified;
+                //}
             }
             ctx.SaveChanges();
         }
-
-
-        //public void UpdateOrderGame(Game t, List<Genre> genre)
-        //{
-        //    ctx.Entry(t).State = EntityState.Modified;
-        //    foreach (Genre g in genre)
-        //    {
-        //        ctx.Entry(g).State = EntityState.Modified;
-        //    }
-        //    ctx.SaveChanges();
-        //}
     }
 }
