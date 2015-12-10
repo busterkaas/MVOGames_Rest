@@ -16,7 +16,9 @@ namespace DTOModels.Converter
             {
                 Id= item.Id,
               CrewId = item.CrewId,
-              UserId = item.UserId
+              UserId = item.UserId,
+             User = new UserConverter().Convert(item.User),
+             Crew = new CrewConverter().Convert(item.Crew)
             };
            
             return crewApplicationDTO;
@@ -28,7 +30,9 @@ namespace DTOModels.Converter
             {
                 Id=item.Id,
                 CrewId = item.CrewId,
-                UserId = item.UserId
+                UserId = item.UserId,
+                User = new UserConverter().Reverse(item.User),
+                Crew = new CrewConverter().Reverse(item.Crew)
             };
 
             return crewApplication;
