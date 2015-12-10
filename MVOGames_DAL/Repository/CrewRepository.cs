@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
@@ -54,7 +58,26 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Crew t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            var originalCrew = ctx.Crews.Include(j => j.Users)
+                .Single(j => j.Id == t.Id);
+
+            // Update scalar/complex properties
+            ctx.Entry(originalCrew).CurrentValues.SetValues(t);
+
+            // Update reference
+            originalCrew.Users.Clear();
+           
+            foreach (var user in t.Users)
+            {
+                //ctx.Users.Attach(user);
+                originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
+                
+
+        }
+
+            //db.Genres.Attach(entity.Genre)
+            //originalVinyl.Genre = entity.Genre;
+
             ctx.SaveChanges();
         }
     }
