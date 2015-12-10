@@ -22,6 +22,7 @@ namespace MVOGames_DAL
         private IRepository<PlatformGame> platformGameRepo;
         private IRepository<CrewGameSuggestion> CGSRepo;
         private IRepository<Order> OrderRepo;
+        private IRepository<Orderline> OrderlineRepo;
         private IRepository<SuggestionUsers> SuggestionUsersRepo;
 
         public DALFacade()
@@ -68,6 +69,10 @@ namespace MVOGames_DAL
         public IRepository<Order> GetOrderRepository()
         {
             return OrderRepo ?? (OrderRepo = new OrderRepository(ctx));
+        }
+        public IRepository<Orderline> GetOrderlineRepository()
+        {
+            return OrderlineRepo ?? (OrderlineRepo = new OrderlinesRepository(ctx));
         }
         public IRepository<SuggestionUsers> GetSuggestionUsersRepository()
         {
