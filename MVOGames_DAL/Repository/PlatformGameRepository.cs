@@ -46,7 +46,7 @@ namespace MVOGames_DAL.Repository
 
         public List<PlatformGame> ReadAll()
         {
-            return ctx.PlatformGames.ToList();
+            return ctx.PlatformGames.Include("Game").Include("Platform").ToList();
         }
 
         public void Update(PlatformGame t)

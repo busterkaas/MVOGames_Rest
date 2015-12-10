@@ -22,6 +22,8 @@ namespace MVOGames_DAL.Repository
         {
             try
             {
+                t.User = new User() { Id = t.UserId };
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
                 ctx.Orders.Add(t);
                 ctx.SaveChanges();
             }
