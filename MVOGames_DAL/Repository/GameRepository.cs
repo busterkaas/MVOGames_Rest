@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MVOGames_DAL.Context;
 using MVOGames_DAL.Models;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace MVOGames_DAL.Repository
 {
@@ -70,7 +71,24 @@ namespace MVOGames_DAL.Repository
         public void Update(Game t)
         {
             ctx.Entry(t).State = EntityState.Modified;
+
+            foreach (var item in t.Genres)
+            {
+                ctx.Entry(item).State = EntityState.Modified;
+
+            }
             ctx.SaveChanges();
         }
+
+
+        //public void UpdateOrderGame(Game t, List<Genre> genre)
+        //{
+        //    ctx.Entry(t).State = EntityState.Modified;
+        //    foreach (Genre g in genre)
+        //    {
+        //        ctx.Entry(g).State = EntityState.Modified;
+        //    }
+        //    ctx.SaveChanges();
+        //}
     }
 }
