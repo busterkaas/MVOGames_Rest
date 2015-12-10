@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
 using MVOGames_DAL.Models;
+using System.Data.Entity;
 
 namespace MVOGames_DAL.Repository
 {
@@ -18,8 +19,12 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(Game t)
         {
-            ctx.Games.Add(t);
-            ctx.SaveChanges();
+            if (t.Genres != null)
+            {
+                t.Genres.ForEach(x => ctx.Entry(x).State = EntityState.Unchanged);
+                ctx.Games.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
@@ -64,7 +69,7 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Game t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            ctx.Entry(t).State = EntityState.Modified;
             ctx.SaveChanges();
         }
     }

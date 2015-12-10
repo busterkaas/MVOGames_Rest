@@ -33,5 +33,6 @@ namespace MVOGames_DAL.Context
         public System.Data.Entity.DbSet<PlatformGame> PlatformGames { get; set; }
         public System.Data.Entity.DbSet<CrewApplication> CrewApplications { get; set; }
         public System.Data.Entity.DbSet<CrewGameSuggestion> CrewGameSuggestions { get; set; }
+        public System.Data.Entity.DbSet<SuggestionUsers> SuggestionUsers { get; set; } 
     }
 }

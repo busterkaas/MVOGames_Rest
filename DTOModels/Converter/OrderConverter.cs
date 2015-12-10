@@ -18,6 +18,7 @@ namespace DTOModels.Converter
                 Id = item.Id,
                 UserId = item.UserId,
                 Date = item.Date,
+                User = new UserConverter().Convert(item.User)
             };
             if (item.Orderlines != null)
             {
@@ -43,6 +44,7 @@ namespace DTOModels.Converter
                 Id = item.Id,
                 UserId = item.UserId,
                 Date = item.Date,
+                User = new UserConverter().Reverse(item.User)
             };
             if (item.Orderlines != null)
             {

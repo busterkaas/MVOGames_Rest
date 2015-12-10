@@ -62,11 +62,11 @@ namespace MVOGames_DAL.Repository
         {
             try
             {
-                return ctx.Orders.ToList();
+                return ctx.Orders.Include("User").ToList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                return null;
             }
         }
 
