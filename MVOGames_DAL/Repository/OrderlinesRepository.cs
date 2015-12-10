@@ -8,7 +8,7 @@ using MVOGames_DAL.Models;
 
 namespace MVOGames_DAL.Repository
 {
-    class OrderlinesRepository : IRepository<Orderline>
+    public class OrderlinesRepository : IRepository<Orderline>
     {
         private MVOGamesContext ctx;
         public OrderlinesRepository(MVOGamesContext context)
