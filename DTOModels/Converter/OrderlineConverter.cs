@@ -15,6 +15,7 @@ namespace DTOModels.Converter
             var orderlineDTO = new OrderlineDTO()
             {
                 Id = item.Id,
+                Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
                 Order= new OrderConverter().Convert(item.Order),
@@ -29,6 +30,7 @@ namespace DTOModels.Converter
             var orderline = new Orderline()
             {
                 Id = item.Id,
+                Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
                 Order = new OrderConverter().Reverse(item.Order),
