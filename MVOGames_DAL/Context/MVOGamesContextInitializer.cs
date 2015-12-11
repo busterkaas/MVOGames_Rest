@@ -64,11 +64,29 @@ namespace MVOGames_DAL.Context
                 Crews = new List<Crew> { },
                 Role = role2
             };
-           
             user3.SetPassword("Mikki");
+
+            User user4 = new User
+            {
+                Username = "dennis",
+                City = "Esbjerg",
+                Email = "delle@gmail.com",
+                FirstName = "Dennis",
+                LastName = "Petersen",
+                HouseNr = "108, 2th",
+                StreetName = "Perker allé",
+                ZipCode = 6700,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+            user4.SetPassword("dennis");
+
+
+
             context.Users.Add(user);
             context.Users.Add(user2);
             context.Users.Add(user3);
+            context.Users.Add(user4);
 
             Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "http://prod.cloud.rockstargames.com/crews/sc/1510/10088/publish/emblem/emblem_128.png", Users = new List<User>() { user2, user3 }, CrewLeaderId = 2});
 

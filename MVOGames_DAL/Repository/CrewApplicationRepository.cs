@@ -17,6 +17,9 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(CrewApplication t)
         {
+            t.User = new User() { Id = t.UserId };
+            t.Crew = new Crew() { Id = t.CrewId };
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
             ctx.CrewApplications.Add(t);
             ctx.SaveChanges();
         }
@@ -49,7 +52,7 @@ namespace MVOGames_DAL.Repository
 
         public List<CrewApplication> ReadAll()
         {
-            return ctx.CrewApplications.ToList();
+            return ctx.CrewApplications.Include("User").ToList();
         }
 
         public void Update(CrewApplication t)
