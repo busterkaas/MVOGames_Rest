@@ -15,5 +15,6 @@ namespace DTOModels.Models
         public PlatformGameDTO PlatformGame { get; set; }
         public decimal Discount { get; set; }
         public DateTime ExpirationTime { get; set; }
+        public DateTime ExpirationDate { get; set; }
     }
 }

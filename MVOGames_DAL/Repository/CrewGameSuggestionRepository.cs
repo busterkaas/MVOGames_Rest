@@ -19,6 +19,9 @@ namespace MVOGames_DAL.Repository
 
         public void Add(CrewGameSuggestion t)
         {
+            t.Crew = new Crew() { Id = t.CrewId };
+            t.PlatformGame = new PlatformGame() { Id = t.PlatformGameId };
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
             ctx.CrewGameSuggestions.Add(t);
             ctx.SaveChanges();
         }

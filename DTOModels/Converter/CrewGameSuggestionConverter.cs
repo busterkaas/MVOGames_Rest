@@ -19,17 +19,10 @@ namespace DTOModels.Converter
                 Crew = new CrewConverter().Convert(item.Crew),
                 PlatformGameId = item.PlatformGameId,
                 PlatformGame = new PlatformGameConverter().Convert(item.PlatformGame),
+                ExpirationDate = item.ExpirationDate,
                 ExpirationTime = item.ExpirationTime,
                 Discount = item.Discount,
             };
-            //crewGameSuggestionDTO.ConfirmedUsers = new List<UserDTO>();
-            //if (item.ConfirmedUsers != null)
-            //{
-            //    foreach (var user in item.ConfirmedUsers)
-            //    {
-            //        crewGameSuggestionDTO.ConfirmedUsers.Add(new UserConverter().Convert(user));
-            //    }
-            //}
             return crewGameSuggestionDTO;
         }
 
@@ -42,17 +35,10 @@ namespace DTOModels.Converter
                 Crew = new CrewConverter().Reverse(item.Crew),
                 PlatformGameId = item.PlatformGameId,
                 PlatformGame = new PlatformGameConverter().Reverse(item.PlatformGame),
+                ExpirationDate = item.ExpirationDate,
                 ExpirationTime = item.ExpirationTime,
                 Discount = item.Discount,
             };
-            //crewGameSuggestion.ConfirmedUsers = new List<User>();
-            //if (item.ConfirmedUsers != null)
-            //{
-            //    foreach (var user in item.ConfirmedUsers)
-            //    {
-            //        crewGameSuggestion.ConfirmedUsers.Add(new UserConverter().Reverse(user));
-            //    }
-            //}
             return crewGameSuggestion;
 
         }
