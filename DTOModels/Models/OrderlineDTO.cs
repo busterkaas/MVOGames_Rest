@@ -9,7 +9,7 @@ namespace DTOModels.Models
     public class OrderlineDTO
     {
         public int Id { get; set; }
-        private int Amount { get; set; }
+        public int Amount { get; set; }
         public decimal Discount { get; set; }
         public int PlatformGameId { get; set; }
         public int OrderId { get; set; }

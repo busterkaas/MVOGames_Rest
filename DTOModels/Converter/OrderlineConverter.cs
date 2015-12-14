@@ -15,6 +15,7 @@ namespace DTOModels.Converter
             var orderlineDTO = new OrderlineDTO()
             {
                 Id = item.Id,
+                Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
                 PlatformGameId = item.PlatformGameId,             
@@ -27,6 +28,7 @@ namespace DTOModels.Converter
             var orderline = new Orderline()
             {
                 Id = item.Id,
+                Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
                 PlatformGameId = item.PlatformGameId,
