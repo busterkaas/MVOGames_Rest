@@ -18,9 +18,7 @@ namespace DTOModels.Converter
                 Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
-                Order= new OrderConverter().Convert(item.Order),
-                PlatformGameId = item.PlatformGameId,
-                PlatformGame = new PlatformGameConverter().Convert(item.PlatformGame)               
+                PlatformGameId = item.PlatformGameId,             
             };
             return orderlineDTO;
         }
@@ -33,9 +31,7 @@ namespace DTOModels.Converter
                 Amount = item.Amount,
                 Discount = item.Discount,
                 OrderId = item.OrderId,
-                Order = new OrderConverter().Reverse(item.Order),
                 PlatformGameId = item.PlatformGameId,
-                PlatformGame = new PlatformGameConverter().Reverse(item.PlatformGame)
             };
             return orderline;
         }

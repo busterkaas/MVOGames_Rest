@@ -14,8 +14,5 @@ namespace MVOGames_DAL.Models
         public decimal Discount { get; set; }
         public int PlatformGameId { get; set; }
         public int OrderId { get; set; }
-        public virtual PlatformGame PlatformGame { get; set; }
-
-        public virtual Order Order { get; set; }
     }
 }

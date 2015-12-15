@@ -13,7 +13,5 @@ namespace DTOModels.Models
         public decimal Discount { get; set; }
         public int PlatformGameId { get; set; }
         public int OrderId { get; set; }
-        public PlatformGameDTO PlatformGame { get; set; }
-        public OrderDTO Order { get; set; }
     }
 }

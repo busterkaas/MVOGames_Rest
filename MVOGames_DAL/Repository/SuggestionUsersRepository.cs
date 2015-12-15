@@ -17,6 +17,9 @@ namespace MVOGames_DAL.Repository
         }
         public void Add(SuggestionUsers t)
         {
+            t.User = new User() { Id = t.UserId };
+            t.CrewGameSuggestion = new CrewGameSuggestion() { Id = t.CrewGameSuggestionId };
+            ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
             ctx.SuggestionUsers.Add(t);
             ctx.SaveChanges();
         }
