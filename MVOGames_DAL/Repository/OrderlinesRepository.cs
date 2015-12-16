@@ -44,7 +44,7 @@ namespace MVOGames_DAL.Repository
 
         public List<Orderline> ReadAll()
         {
-            return ctx.Orderlines.Include("PlatformGame").ToList();
+            return ctx.Orderlines.ToList();
         }
 
         public void Update(Orderline t)

@@ -298,21 +298,8 @@ namespace MVOGames_DAL.Context
             PlatformGame pg4 =
               context.PlatformGames.Add(new PlatformGame() { Id = 5, GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
 
-
-            //Order o = context.Orders.Add(new Order() { Id = 1, Date = DateTime.Today, UserId = 1 });
-            //Order o1 = context.Orders.Add(new Order() { Id = 2, Date = DateTime.Today, UserId = 1 });
-            //Order o2 = context.Orders.Add(new Order() { Id = 3, Date = DateTime.Today, UserId = 3 });
-            //Order o3 = context.Orders.Add(new Order() { Id = 4, Date = DateTime.Today, UserId = 2 });
-            //Order o4 = context.Orders.Add(new Order() { Id = 5, Date = DateTime.Today, UserId = 3 });
-
-            //Orderline ol = context.Orderlines.Add(new Orderline() { Amount = 1, Discount = 0, PlatformGameId = 1, OrderId = 1 });
-            //Orderline ol1 = context.Orderlines.Add(new Orderline() { Amount = 2, Discount = 0, PlatformGameId = 2, OrderId = 1 });
-            //Orderline ol2 = context.Orderlines.Add(new Orderline() { Amount = 1, Discount = 0, PlatformGameId = 3, OrderId = 1 });
-            //Orderline ol3 = context.Orderlines.Add(new Orderline() { Amount = 5, Discount = 2, PlatformGameId = 2, OrderId = 2 });
-            //Orderline ol4 = context.Orderlines.Add(new Orderline() { Amount = 2, Discount = 0, PlatformGameId = 4, OrderId = 3 });
-            //Orderline ol5 = context.Orderlines.Add(new Orderline() { Amount = 1, Discount = 0, PlatformGameId = 1, OrderId = 4 });
-            //Orderline ol6 = context.Orderlines.Add(new Orderline() { Amount = 1, Discount = 0, PlatformGameId = 3, OrderId = 5 });
-              context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
+            
+            context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
             PlatformGame pg5 =
               context.PlatformGames.Add(new PlatformGame() { GameId = 3, PlatformId = 1, Price = 400, Stock = 30 });
             PlatformGame pg6 =
