@@ -11,9 +11,9 @@ namespace DTOModels.Models
     {
         public int Id { get; set; }
         public int CrewGameSuggestionId { get; set; }
-        public CrewGameSuggestion CrewGameSuggestion { get; set; }
+        public CrewGameSuggestionDTO CrewGameSuggestion { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public UserDTO User { get; set; }
         public bool HasConfirmed { get; set; }
     }
 }

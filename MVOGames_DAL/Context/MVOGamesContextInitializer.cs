@@ -86,12 +86,73 @@ namespace MVOGames_DAL.Context
                 FirstName = "Dennis",
                 LastName = "Petersen",
                 HouseNr = "108, 2th",
-                StreetName = "Perker allé",
+                StreetName = "GettoNettoGade",
                 ZipCode = 6700,
                 Crews = new List<Crew> { },
                 Role = role2
             };
             user4.SetPassword("dennis");
+
+            User user5 = new User
+            {
+                Id = 5,
+                Username = "kensie",
+                City = "Esbjerg",
+                Email = "kelle@gmail.com",
+                FirstName = "Kennie",
+                LastName = "Ankersøe",
+                HouseNr = "2",
+                StreetName = "Ølgade",
+                ZipCode = 6700,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+            user5.SetPassword("kensie");
+            User user6 = new User
+            {
+                Id = 6,
+                Username = "tasina",
+                City = "Esbjerg",
+                Email = "tas@gmail.com",
+                FirstName = "Tasin",
+                LastName = "Akdeniz",
+                HouseNr = "12, 10tv",
+                StreetName = "Jotlevej",
+                ZipCode = 6700,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+            user6.SetPassword("tasina");
+            User user7 = new User
+            {
+                Id = 7,
+                Username = "Baasteeringz",
+                City = "Esbjerg",
+                Email = "bulle@gmail.com",
+                FirstName = "Buster",
+                LastName = "Jensen",
+                HouseNr = "175 C, 2th",
+                StreetName = "Ingemanns Allé",
+                ZipCode = 6700,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+            user7.SetPassword("buster");
+            User user8 = new User
+            {
+                Id = 8,
+                Username = "user",
+                City = "UserCity",
+                Email = "user@user.com",
+                FirstName = "User",
+                LastName = "Userness",
+                HouseNr = "1",
+                StreetName = "UserStreet",
+                ZipCode = 1000,
+                Crews = new List<Crew> { },
+                Role = role2
+            };
+            user8.SetPassword("user");
 
 
 
@@ -99,9 +160,19 @@ namespace MVOGames_DAL.Context
             context.Users.Add(user2);
             context.Users.Add(user3);
             context.Users.Add(user4);
+            context.Users.Add(user5);
+            context.Users.Add(user6);
+            context.Users.Add(user7);
+            context.Users.Add(user8);
 
-            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "http://prod.cloud.rockstargames.com/crews/sc/1510/10088/publish/emblem/emblem_128.png", Users = new List<User>() { user2, user3 }, CrewLeaderId = 2});
-
+            Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "http://prod.cloud.rockstargames.com/crews/sc/1510/10088/publish/emblem/emblem_128.png", Users = new List<User>() { user2, user3, user7 }, CrewLeaderId = 2});
+            Crew crew2 = context.Crews.Add(new Crew() { Id = 1, Name = "PS4Crew", CrewImgUrl = "", Users = new List<User>() { user7, user3, user2 }, CrewLeaderId = 6 });
+            Crew crew3 = context.Crews.Add(new Crew() { Id = 1, Name = "NoNamesCrew", CrewImgUrl = "", Users = new List<User>() { user6 }, CrewLeaderId = 5 });
+            Crew crew1 = context.Crews.Add(new Crew() { Id = 1, Name = "Esbjerg Homies", CrewImgUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Columbus_Crew_logo_(1996%E2%80%932014).svg/849px-Columbus_Crew_logo_(1996%E2%80%932014).svg.png", Users = new List<User>() { user7, user6, user5, user4 }, CrewLeaderId = 6 });
+            Crew crew4 = context.Crews.Add(new Crew() { Id = 1, Name = "LoL", CrewImgUrl = "", Users = new List<User>() { user5  }, CrewLeaderId = 4 });
+            Crew crew5 = context.Crews.Add(new Crew() { Id = 1, Name = "Peters gruppe", CrewImgUrl = "", Users = new List<User>() { user8, user4 }, CrewLeaderId = 7 });
+            Crew crew6 = context.Crews.Add(new Crew() { Id = 1, Name = "Gangsta crew", CrewImgUrl = "", Users = new List<User>() { user8, user5 }, CrewLeaderId = 7 });
+            Crew crew7 = context.Crews.Add(new Crew() { Id = 1, Name = "uAndMeTogether", CrewImgUrl = "", Users = new List<User>() { user8 }, CrewLeaderId = 7 });
             IList<Game> games = new List<Game>();
 
             games.Add(new Game
