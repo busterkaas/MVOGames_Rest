@@ -16,9 +16,9 @@ namespace DTOModels.Converter
             {
                 Id = item.Id,
                 CrewGameSuggestionId = item.CrewGameSuggestionId,
-                CrewGameSuggestion = item.CrewGameSuggestion,
+                CrewGameSuggestion = new CrewGameSuggestionConverter().Convert(item.CrewGameSuggestion),
                 UserId = item.UserId,
-                User = item.User,
+                User = new UserConverter().Convert(item.User),
                 HasConfirmed = item.HasConfirmed
             };
           
@@ -31,9 +31,9 @@ namespace DTOModels.Converter
             {
                 Id = item.Id,
                 CrewGameSuggestionId = item.CrewGameSuggestionId,
-                CrewGameSuggestion = item.CrewGameSuggestion,
+                CrewGameSuggestion = new CrewGameSuggestionConverter().Reverse(item.CrewGameSuggestion),
                 UserId = item.UserId,
-                User = item.User,
+                User = new UserConverter().Reverse(item.User),
                 HasConfirmed = item.HasConfirmed
             };
 
