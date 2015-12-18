@@ -8,7 +8,7 @@ using System.Web.Http.Description;
 using DTOModels.Converter;
 using DTOModels.Models;
 using MVOGames_DAL;
-using MVOGames_DAL.Models;
+using DomainModels.Models;
 
 namespace MVOGames_Rest.Controllers
 {
@@ -41,7 +41,7 @@ namespace MVOGames_Rest.Controllers
 
         // PUT: api/Genres/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPlatformGame(int id, PlatformGame platformgame)
+        public IHttpActionResult PutPlatformGame(int id, PlatformGameDTO platformgame)
         {
             if (!ModelState.IsValid)
             {
@@ -52,25 +52,25 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetPlatformGameRepository().Update(platformgame);
+            facade.GetPlatformGameRepository().Update(new PlatformGameConverter().Reverse(platformgame));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Genres
-        [ResponseType(typeof(PlatformGame))]
-        public IHttpActionResult PostPlatformGame(PlatformGame platformgame)
+        [ResponseType(typeof(PlatformGameDTO))]
+        public IHttpActionResult PostPlatformGame(PlatformGameDTO platformgame)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            facade.GetPlatformGameRepository().Add(platformgame);
+            facade.GetPlatformGameRepository().Add(new PlatformGameConverter().Reverse(platformgame));
             return CreatedAtRoute("DefaultApi", new { id = platformgame.Id }, platformgame);
         }
 
         // DELETE: api/Genres/5
-        [ResponseType(typeof(PlatformGame))]
+        [ResponseType(typeof(PlatformGameDTO))]
         public IHttpActionResult DeletePlatformGame(int id)
         {
             PlatformGame platformgame = facade.GetPlatformGameRepository().Find(id);

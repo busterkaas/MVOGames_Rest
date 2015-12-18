@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class CrewGameSuggestion
     {
@@ -19,6 +19,5 @@ namespace MVOGames_DAL.Models
         public DateTime ExpirationTime { get; set; }
         [DataType(DataType.Date)]
         public DateTime ExpirationDate { get; set; }
-
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class Crew
     {
@@ -12,8 +12,7 @@ namespace MVOGames_DAL.Models
         public string Name { get; set; }
         public string CrewImgUrl { get; set; }
         public int CrewLeaderId { get; set; }
-        //public virtual User CrewLeader { get; set; }
         public virtual List<User> Users { get; set; }
-        public virtual List<CrewApplication> Applications { get; set; } 
+        public virtual List<CrewApplication> Applications { get; set; }
     }
 }

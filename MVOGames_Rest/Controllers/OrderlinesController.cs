@@ -1,7 +1,7 @@
-﻿using DTOModels.Converter;
+﻿using DomainModels.Models;
+using DTOModels.Converter;
 using DTOModels.Models;
 using MVOGames_DAL;
-using MVOGames_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace MVOGames_Rest.Controllers
 
         // PUT: api/Orders/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutOrderline(int id, Orderline orderline)
+        public IHttpActionResult PutOrderline(int id, OrderlineDTO orderline)
         {
             if (!ModelState.IsValid)
             {
@@ -52,25 +52,25 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetOrderlineRepository().Update(orderline);
+            facade.GetOrderlineRepository().Update(new OrderlineConverter().Reverse(orderline));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Orders
-        [ResponseType(typeof(Orderline))]
-        public IHttpActionResult PostOrderline(Orderline orderline)
+        [ResponseType(typeof(OrderlineDTO))]
+        public IHttpActionResult PostOrderline(OrderlineDTO orderline)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            facade.GetOrderlineRepository().Add(orderline);
+            facade.GetOrderlineRepository().Add(new OrderlineConverter().Reverse(orderline));
             return CreatedAtRoute("DefaultApi", new { id = orderline.Id }, orderline);
         }
 
         // DELETE: api/Orders/5
-        [ResponseType(typeof(Orderline))]
+        [ResponseType(typeof(OrderlineDTO))]
         public IHttpActionResult DeleteOrderline(int id)
         {
             Orderline orderline = facade.GetOrderlineRepository().Find(id);

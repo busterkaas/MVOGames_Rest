@@ -1,10 +1,10 @@
-﻿using DTOModels.Models;
+﻿using DomainModels.Models;
+using DTOModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGames_DAL.Models;
 
 namespace DTOModels.Converter
 {
@@ -17,6 +17,7 @@ namespace DTOModels.Converter
                 Id = item.Id,
                 Name = item.Name
             };
+           
             return platformDTO;
         }
 
@@ -27,6 +28,7 @@ namespace DTOModels.Converter
                 Id = item.Id,
                 Name = item.Name
             };
+            
             return platform;
         }
     }

@@ -12,6 +12,6 @@ namespace DTOModels.Models
         public DateTime Date { get; set; }
         public int UserId { get; set; }
         public UserDTO User { get; set; }
-        public virtual List<OrderlineDTO> Orderlines { get; set; }
+        public List<OrderlineDTO> Orderlines { get; set; }
     }
 }

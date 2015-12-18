@@ -1,7 +1,7 @@
-﻿using DTOModels.Converter;
+﻿using DomainModels.Models;
+using DTOModels.Converter;
 using DTOModels.Models;
 using MVOGames_DAL;
-using MVOGames_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace MVOGames_Rest.Controllers
 
         // PUT: api/Roles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRole(int id, Role role)
+        public IHttpActionResult PutRole(int id, RoleDTO role)
         {
             if (!ModelState.IsValid)
             {
@@ -52,25 +52,25 @@ namespace MVOGames_Rest.Controllers
             {
                 return BadRequest();
             }
-            facade.GetRoleRepository().Update(role);
+            facade.GetRoleRepository().Update(new RoleConverter().Reverse(role));
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Roles
-        [ResponseType(typeof(Role))]
-        public IHttpActionResult PostRole(Role role)
+        [ResponseType(typeof(RoleDTO))]
+        public IHttpActionResult PostRole(RoleDTO role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            facade.GetRoleRepository().Add(role);
+            facade.GetRoleRepository().Add(new RoleConverter().Reverse(role));
             return CreatedAtRoute("DefaultApi", new { id = role.Id }, role);
         }
 
         // DELETE: api/Roles/5
-        [ResponseType(typeof(Role))]
+        [ResponseType(typeof(RoleDTO))]
         public IHttpActionResult DeleteRole(int id)
         {
             Role role = facade.GetRoleRepository().Find(id);

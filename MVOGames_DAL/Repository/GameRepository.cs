@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
-using MVOGames_DAL.Models;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using DomainModels.Models;
 
 namespace MVOGames_DAL.Repository
 {

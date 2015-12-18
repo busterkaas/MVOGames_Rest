@@ -236,6 +236,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{341b62d1-759b-4f80-852d-5e66a042504f}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTOModels\DTOModels.csproj">
       <Project>{7cb8527a-50e1-411d-817c-15eecf56b884}</Project>
       <Name>DTOModels</Name>

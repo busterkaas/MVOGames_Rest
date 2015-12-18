@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
-using MVOGames_DAL.Models;
 using MVOGames_DAL.Repository;
+using DomainModels.Models;
 
 namespace MVOGames_DAL
 {

@@ -1,7 +1,7 @@
-﻿using DTOModels.Converter;
+﻿using DomainModels.Models;
+using DTOModels.Converter;
 using DTOModels.Models;
 using MVOGames_DAL;
-using MVOGames_DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,10 @@ namespace MVOGames_Rest.Controllers
             var usersDTO = converter.Convert(users);
             return usersDTO;
         }
+
+
+        //[Route("Hej")]
+
 
         // GET: api/Users/5
         [ResponseType(typeof(UserDTO))]

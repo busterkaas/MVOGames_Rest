@@ -1,16 +1,16 @@
-﻿using System;
+﻿using DomainModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVOGames_DAL.Models;
 
 namespace MVOGames_DAL.Context
 {
     public class MVOGamesContext : DbContext
     {
-        public MVOGamesContext() : base("MVOGamesDB")
+        public MVOGamesContext() : base("MVOGamesDBNewTrial")
         {
             //Add this line to make json conversin happy.
             //Configuration.ProxyCreationEnabled = false;

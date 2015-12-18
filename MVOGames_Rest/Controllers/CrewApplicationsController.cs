@@ -8,7 +8,7 @@ using System.Web.Http.Description;
 using DTOModels.Converter;
 using DTOModels.Models;
 using MVOGames_DAL;
-using MVOGames_DAL.Models;
+using DomainModels.Models;
 
 namespace MVOGames_Rest.Controllers
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class Genre
     {

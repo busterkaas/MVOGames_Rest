@@ -1,4 +1,5 @@
-﻿using MVOGames_DAL.Models;
+﻿
+using DomainModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -33,7 +34,7 @@ namespace MVOGames_DAL.Context
 
             User user = new User
             {
-                Id = 1,
+                Id = 8,
                 Username = "buster",
                 City = "Esbjerg",
                 Email = "bulle@gmail.com",
@@ -48,7 +49,7 @@ namespace MVOGames_DAL.Context
             user.SetPassword("buster");
             User user2 = new User
             {
-                Id = 2,
+                Id = 1,
                 Username = "shane",
                 City = "Oslo",
                 Email = "shalle@gmail.com",
@@ -63,7 +64,7 @@ namespace MVOGames_DAL.Context
             user2.SetPassword("shane");
             User user3 = new User
             {
-                Id = 3,
+                Id = 2,
                 Username = "Mikki",
                 City = "Flensburg",
                 Email = "mille@gmail.com",
@@ -79,7 +80,7 @@ namespace MVOGames_DAL.Context
 
             User user4 = new User
             {
-                Id = 4,
+                Id = 3,
                 Username = "dennis",
                 City = "Esbjerg",
                 Email = "delle@gmail.com",
@@ -95,7 +96,7 @@ namespace MVOGames_DAL.Context
 
             User user5 = new User
             {
-                Id = 5,
+                Id = 4,
                 Username = "kensie",
                 City = "Esbjerg",
                 Email = "kelle@gmail.com",
@@ -110,7 +111,7 @@ namespace MVOGames_DAL.Context
             user5.SetPassword("kensie");
             User user6 = new User
             {
-                Id = 6,
+                Id = 5,
                 Username = "tasina",
                 City = "Esbjerg",
                 Email = "tas@gmail.com",
@@ -125,7 +126,7 @@ namespace MVOGames_DAL.Context
             user6.SetPassword("tasina");
             User user7 = new User
             {
-                Id = 7,
+                Id = 6,
                 Username = "Baasteeringz",
                 City = "Esbjerg",
                 Email = "bulle@gmail.com",
@@ -140,7 +141,7 @@ namespace MVOGames_DAL.Context
             user7.SetPassword("buster");
             User user8 = new User
             {
-                Id = 8,
+                Id = 7,
                 Username = "user",
                 City = "UserCity",
                 Email = "user@user.com",
@@ -359,18 +360,15 @@ namespace MVOGames_DAL.Context
             }
 
             PlatformGame pg =
-                context.PlatformGames.Add(new PlatformGame() { Id = 1, GameId = 1, PlatformId = 1, Price = 499, Stock = 20 });
+                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 1, Price = 499, Stock = 20 });
             PlatformGame pg1 =
-                context.PlatformGames.Add(new PlatformGame() { Id = 2, GameId = 1, PlatformId = 2, Price = 469, Stock = 15 });
+                context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 2, Price = 469, Stock = 15 });
             PlatformGame pg2 =
-              context.PlatformGames.Add(new PlatformGame() { Id = 3, GameId = 1, PlatformId = 3, Price = 400, Stock = 0 });
+              context.PlatformGames.Add(new PlatformGame() { GameId = 1, PlatformId = 3, Price = 400, Stock = 0 });
             PlatformGame pg3 =
-                context.PlatformGames.Add(new PlatformGame() { Id = 4, GameId = 2, PlatformId = 1, Price = 549, Stock = 15 });
+                context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 1, Price = 549, Stock = 15 });
             PlatformGame pg4 =
-              context.PlatformGames.Add(new PlatformGame() { Id = 5, GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
-
-            
-            context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
+              context.PlatformGames.Add(new PlatformGame() { GameId = 2, PlatformId = 2, Price = 529, Stock = 0 });
             PlatformGame pg5 =
               context.PlatformGames.Add(new PlatformGame() { GameId = 3, PlatformId = 1, Price = 400, Stock = 30 });
             PlatformGame pg6 =
@@ -427,7 +425,7 @@ namespace MVOGames_DAL.Context
               context.PlatformGames.Add(new PlatformGame() { GameId = 15, PlatformId = 3, Price = 339, Stock = 22 });
             PlatformGame pg32 =
               context.PlatformGames.Add(new PlatformGame() { GameId = 16, PlatformId = 1, Price = 429, Stock = 34 });
-            
+
             base.Seed(context);
 
 

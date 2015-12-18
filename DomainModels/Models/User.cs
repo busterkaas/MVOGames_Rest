@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class User
     {
@@ -16,21 +16,13 @@ namespace MVOGames_DAL.Models
         }
         private const int WorkFactor = 13;
         public int Id { get; set; }
-        [Required]
         public string Username { get; set; }
-        [Required(ErrorMessage = "A FirstName is required!")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "A LastName is required!")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "A StreetName is required!")]
         public string StreetName { get; set; }
-        [Required(ErrorMessage = "A HouseNumber is required!")]
         public string HouseNr { get; set; }
-        [Required(ErrorMessage = "A ZipCode is required!")]
         public int ZipCode { get; set; }
-        [Required(ErrorMessage = "A City is required!")]
         public string City { get; set; }
-        [Required(ErrorMessage = "An Email is required!")]
         public string Email { get; set; }
         [Required, DataType(DataType.Password)]
         public string PasswordHash { get; set; }
@@ -52,8 +44,8 @@ namespace MVOGames_DAL.Models
         [Required]
         public virtual Role Role { get; set; }
 
-        public int  RoleId { get; set; }
+        public int RoleId { get; set; }
 
-        public virtual List<CrewApplication> Applications { get; set; } 
+        public virtual List<CrewApplication> Applications { get; set; }
     }
 }

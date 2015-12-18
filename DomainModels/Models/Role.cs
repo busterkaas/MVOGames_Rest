@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class Role
     {
         public Role()
         {
-            Users = new List<User>();
+            //Users = new List<User>();
         }
         public int Id { get; set; }
         public string RoleName { get; set; }
-        public virtual List<User> Users { get; set; }
     }
 }

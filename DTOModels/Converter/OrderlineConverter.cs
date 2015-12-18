@@ -1,5 +1,5 @@
-﻿using DTOModels.Models;
-using MVOGames_DAL.Models;
+﻿using DomainModels.Models;
+using DTOModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

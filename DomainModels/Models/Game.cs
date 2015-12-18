@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVOGames_DAL.Models
+namespace DomainModels.Models
 {
     public class Game
     {
@@ -15,7 +15,6 @@ namespace MVOGames_DAL.Models
             Genres = new List<Genre>();
         }
         public int Id { get; set; }
-        [Required(ErrorMessage = "A Title is required!")]
         public string Title { get; set; }
         [DataType(DataType.Date)]
         [Required]

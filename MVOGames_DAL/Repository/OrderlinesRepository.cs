@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MVOGames_DAL.Context;
-using MVOGames_DAL.Models;
+using DomainModels.Models;
 
 namespace MVOGames_DAL.Repository
 {
@@ -44,7 +44,7 @@ namespace MVOGames_DAL.Repository
 
         public List<Orderline> ReadAll()
         {
-            return ctx.Orderlines.ToList();
+            return ctx.Orderlines.Include("PlatformGame").ToList();
         }
 
         public void Update(Orderline t)

@@ -1,5 +1,5 @@
-﻿using MVOGames_DAL.Context;
-using MVOGames_DAL.Models;
+﻿using DomainModels.Models;
+using MVOGames_DAL.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;

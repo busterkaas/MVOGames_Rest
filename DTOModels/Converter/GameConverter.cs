@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTOModels.Models;
-using MVOGames_DAL.Models;
+using DomainModels.Models;
 
 namespace DTOModels.Converter
 {
@@ -30,20 +30,6 @@ namespace DTOModels.Converter
                     {
                         Id = genre.Id,
                         Name = genre.Name
-                    });
-                }
-            }
-            gameDTO.GPlatforms = new List<PlatformGameDTO>();
-            if (item.GPlatforms != null)
-            {
-                foreach (var gPlatform in item.GPlatforms)
-                {
-                    gameDTO.GPlatforms.Add(new PlatformGameDTO()
-                    {
-                        GameId = gPlatform.GameId,
-                        PlatformId = gPlatform.PlatformId,
-                        Price = gPlatform.Price,
-                        Stock = gPlatform.Stock
                     });
                 }
             }
