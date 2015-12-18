@@ -10,7 +10,7 @@ namespace MVOGames_DAL.Context
 {
     public class MVOGamesContext : DbContext
     {
-        public MVOGamesContext() : base("MVOGamesDBNewTrial")
+        public MVOGamesContext() : base("MVOGamesDB")
         {
             //Add this line to make json conversin happy.
             //Configuration.ProxyCreationEnabled = false;
