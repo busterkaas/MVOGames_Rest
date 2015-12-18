@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -74,7 +75,18 @@ namespace MVOGames_DAL.Repository
 
         public void Update(Order t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            var originalOrder = ctx.Orders.Include(j => j.Orderlines).Single(j => j.Id == t.Id);
+
+            // Update scalar/complex properties
+            ctx.Entry(originalOrder).CurrentValues.SetValues(t);
+
+            // Update reference
+            originalOrder.Orderlines.Clear();
+
+            foreach (var orderline in t.Orderlines)
+            {
+                originalOrder.Orderlines.Add(ctx.Orderlines.FirstOrDefault(x => x.Id == orderline.Id));
+            }
             ctx.SaveChanges();
         }
     }
