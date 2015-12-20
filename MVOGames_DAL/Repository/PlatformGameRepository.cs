@@ -15,6 +15,9 @@ namespace MVOGames_DAL.Repository
         {
             using (MVOGamesContext ctx = new MVOGamesContext())
             {
+                t.Game = new Game() {Id = t.GameId };
+                t.Platform = new Platform() { Id = t.PlatformId };
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
                 ctx.PlatformGames.Add(t);
                 ctx.SaveChanges();
             }
