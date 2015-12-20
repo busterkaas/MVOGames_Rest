@@ -74,18 +74,14 @@ namespace MVOGames_DAL.Repository
                 ctx.Entry(originalCrew).CurrentValues.SetValues(t);
 
                 // Update reference
-                originalCrew.Users.Clear();
-
-                foreach (var user in t.Users)
+                if (t.Users != null)
                 {
-                    //ctx.Users.Attach(user);
-                    originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
-
-
+                    originalCrew.Users.Clear();
+                    foreach (var user in t.Users)
+                    {
+                        originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
+                    }
                 }
-
-                //db.Genres.Attach(entity.Genre)
-                //originalVinyl.Genre = entity.Genre;
 
                 ctx.SaveChanges();
             }
