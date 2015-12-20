@@ -12,7 +12,7 @@ namespace DomainModels.Models
         public string Name { get; set; }
         public string CrewImgUrl { get; set; }
         public int CrewLeaderId { get; set; }
-        public virtual List<User> Users { get; set; }
-        public virtual List<CrewApplication> Applications { get; set; }
+        public List<User> Users { get; set; }
+        public List<CrewApplication> Applications { get; set; }
     }
 }

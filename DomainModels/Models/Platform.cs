@@ -14,6 +14,6 @@ namespace DomainModels.Models
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual List<PlatformGame> PGames { get; set; }
+        public List<PlatformGame> PGames { get; set; }
     }
 }

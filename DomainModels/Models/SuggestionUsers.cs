@@ -10,9 +10,9 @@ namespace DomainModels.Models
     {
         public int Id { get; set; }
         public int CrewGameSuggestionId { get; set; }
-        public virtual CrewGameSuggestion CrewGameSuggestion { get; set; }
+        public CrewGameSuggestion CrewGameSuggestion { get; set; }
         public int UserId { get; set; }
-        public virtual User User { get; set; }
+        public User User { get; set; }
         public bool HasConfirmed { get; set; }
     }
 }

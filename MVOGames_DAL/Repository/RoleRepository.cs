@@ -10,56 +10,66 @@ namespace MVOGames_DAL.Repository
 {
     public class RoleRepository : IRepository<Role>
     {
-        private MVOGamesContext ctx;
-        public RoleRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(Role t)
         {
-            ctx.Roles.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Roles.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            Role role = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Roles.Attach(role);
-                ctx.Roles.Remove(role);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                Role role = Find(id);
+                try
+                {
+                    ctx.Roles.Attach(role);
+                    ctx.Roles.Remove(role);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
 
         public Role Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<Role> ReadAll()
         {
-            return ctx.Roles.ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.Roles.ToList();
+            }
         }
 
         public void Update(Role t)
         {
-            foreach (var rolesDB in ctx.Roles.ToList())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (t.Id == rolesDB.Id)
+                foreach (var rolesDB in ctx.Roles.ToList())
                 {
-                    rolesDB.RoleName = t.RoleName;
-                    ctx.Roles.Attach(rolesDB);
+                    if (t.Id == rolesDB.Id)
+                    {
+                        rolesDB.RoleName = t.RoleName;
+                        ctx.Roles.Attach(rolesDB);
+                    }
                 }
             }
         }

@@ -17,6 +17,6 @@ namespace DomainModels.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public virtual List<Game> Games { get; set; }
+        public List<Game> Games { get; set; }
     }
 }

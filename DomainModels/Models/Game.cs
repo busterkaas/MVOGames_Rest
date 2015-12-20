@@ -22,7 +22,7 @@ namespace DomainModels.Models
         public string CoverUrl { get; set; }
         public string TrailerUrl { get; set; }
         public string Description { get; set; }
-        public virtual List<PlatformGame> GPlatforms { get; set; }
-        public virtual List<Genre> Genres { get; set; }
+        public List<PlatformGame> GPlatforms { get; set; }
+        public List<Genre> Genres { get; set; }
     }
 }

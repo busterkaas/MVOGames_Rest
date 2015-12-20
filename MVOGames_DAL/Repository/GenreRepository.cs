@@ -10,52 +10,62 @@ namespace MVOGames_DAL.Repository
 {
     public class GenreRepository : IRepository<Genre>
     {
-        private MVOGamesContext ctx;
-        public GenreRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(Genre t)
         {
-            ctx.Genres.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Genres.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            Genre genre = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Genres.Attach(genre);
-                ctx.Genres.Remove(genre);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                Genre genre = Find(id);
+                try
+                {
+                    ctx.Genres.Attach(genre);
+                    ctx.Genres.Remove(genre);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
 
         public Genre Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<Genre> ReadAll()
         {
-            return ctx.Genres.ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.Genres.ToList();
+            }
         }
 
         public void Update(Genre t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

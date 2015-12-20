@@ -10,57 +10,66 @@ namespace MVOGames_DAL.Repository
 {
     public class CrewGameSuggestionRepository : IRepository<CrewGameSuggestion>
     {
-        private MVOGamesContext ctx;
-
-        public CrewGameSuggestionRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
 
         public void Add(CrewGameSuggestion t)
         {
-            t.Crew = new Crew() { Id = t.CrewId };
-            t.PlatformGame = new PlatformGame() { Id = t.PlatformGameId };
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
-            ctx.CrewGameSuggestions.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                t.Crew = new Crew() { Id = t.CrewId };
+                t.PlatformGame = new PlatformGame() { Id = t.PlatformGameId };
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
+                ctx.CrewGameSuggestions.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            CrewGameSuggestion crewGameSuggestion = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.CrewGameSuggestions.Attach(crewGameSuggestion);
-                ctx.CrewGameSuggestions.Remove(crewGameSuggestion);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                CrewGameSuggestion crewGameSuggestion = Find(id);
+                try
+                {
+                    ctx.CrewGameSuggestions.Attach(crewGameSuggestion);
+                    ctx.CrewGameSuggestions.Remove(crewGameSuggestion);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
 
         public CrewGameSuggestion Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<CrewGameSuggestion> ReadAll()
         {
-            return ctx.CrewGameSuggestions.ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.CrewGameSuggestions.Include("Crew").Include("PlatformGame.Game").Include("PlatformGame.Platform").ToList();
+            }
         }
 
         public void Update(CrewGameSuggestion t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

@@ -10,55 +10,65 @@ namespace MVOGames_DAL.Repository
 {
     class CrewApplicationRepository : IRepository<CrewApplication>
     {
-        private MVOGamesContext ctx;
-        public CrewApplicationRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(CrewApplication t)
         {
-            t.User = new User() { Id = t.UserId };
-            t.Crew = new Crew() { Id = t.CrewId };
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
-            ctx.CrewApplications.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                t.User = new User() { Id = t.UserId };
+                t.Crew = new Crew() { Id = t.CrewId };
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
+                ctx.CrewApplications.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            CrewApplication crewApplication = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.CrewApplications.Attach(crewApplication);
-                ctx.CrewApplications.Remove(crewApplication);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                CrewApplication crewApplication = Find(id);
+                try
+                {
+                    ctx.CrewApplications.Attach(crewApplication);
+                    ctx.CrewApplications.Remove(crewApplication);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
 
         public CrewApplication Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<CrewApplication> ReadAll()
         {
-            return ctx.CrewApplications.Include("User").ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.CrewApplications.Include("User").ToList();
+            }
         }
 
         public void Update(CrewApplication t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

@@ -11,9 +11,9 @@ namespace DomainModels.Models
     {
         public int Id { get; set; }
         public int CrewId { get; set; }
-        public virtual Crew Crew { get; set; }
+        public Crew Crew { get; set; }
         public int PlatformGameId { get; set; }
-        public virtual PlatformGame PlatformGame { get; set; }
+        public PlatformGame PlatformGame { get; set; }
         public decimal Discount { get; set; }
         [DataType(DataType.Time)]
         public DateTime ExpirationTime { get; set; }

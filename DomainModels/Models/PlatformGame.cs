@@ -11,8 +11,8 @@ namespace DomainModels.Models
         public int Id { get; set; }
         public int GameId { get; set; }
         public int PlatformId { get; set; }
-        public virtual Game Game { get; set; }
-        public virtual Platform Platform { get; set; }
+        public Game Game { get; set; }
+        public Platform Platform { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
     }

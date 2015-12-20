@@ -10,8 +10,8 @@ namespace DomainModels.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public virtual User User { get; set; }
+        public User User { get; set; }
         public int CrewId { get; set; }
-        public virtual Crew Crew { get; set; }
+        public Crew Crew { get; set; }
     }
 }

@@ -11,66 +11,79 @@ namespace MVOGames_DAL.Repository
 {
     public class UserRepository : IRepository<User>
     {
-        private MVOGamesContext ctx;
-        public UserRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(User t)
         {
-            ctx.Users.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Users.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            User user = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Users.Attach(user);
-                ctx.Users.Remove(user);
-                ctx.SaveChanges();
-            }
-            catch(SqlException)
-            {
+                User user = Find(id);
+                try
+                {
+                    ctx.Users.Attach(user);
+                    ctx.Users.Remove(user);
+                    ctx.SaveChanges();
+                }
+                catch (SqlException)
+                {
 
+                }
             }
         }
 
         public User Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public User FindByUsername(string username)
         {
-            var user = ctx.Users.FirstOrDefault(u => u.Username == username);
-            if (user == null)
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                return null;
-            }
-            else
-            {
-                return user;
+                var user = ctx.Users.FirstOrDefault(u => u.Username == username);
+                if (user == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return user;
+                }
             }
         }
 
         public List<User> ReadAll()
         {
-            return ctx.Users.Include("Crews").Include("Role").ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.Users.Include("Crews").Include("Role").ToList();
+            }
         }
 
         public void Update(User t)
         {
-            ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
 
        

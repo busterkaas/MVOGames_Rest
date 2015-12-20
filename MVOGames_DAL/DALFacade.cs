@@ -11,7 +11,6 @@ namespace MVOGames_DAL
 {
     public class DALFacade
     {
-        private MVOGamesContext ctx;
         private IRepository<Game> gameRepo;
         private IRepository<Genre> genreRepo;
         private IRepository<Crew> crewRepo;
@@ -25,58 +24,53 @@ namespace MVOGames_DAL
         private IRepository<Orderline> OrderlineRepo;
         private IRepository<SuggestionUsers> SuggestionUsersRepo;
 
-        public DALFacade()
-        {
-            ctx = new MVOGamesContext();
-        }
-
         public IRepository<Game> GetGameRepository()
         {
-            return gameRepo ?? (gameRepo = new GameRepository(ctx));
+                return gameRepo ?? (gameRepo = new GameRepository());
         }
         public IRepository<Genre> GetGenreRepository()
         {
-            return genreRepo ?? (genreRepo = new GenreRepository(ctx));
+                return genreRepo ?? (genreRepo = new GenreRepository());
         }
         public IRepository<Crew> GetCrewRepository()
         {
-            return crewRepo ?? (crewRepo = new CrewRepository(ctx));
+                return crewRepo ?? (crewRepo = new CrewRepository());
         }
         public UserRepository GetUserRepository()
         {
-            return userRepo ?? (userRepo = new UserRepository(ctx));
+                return userRepo ?? (userRepo = new UserRepository());
         }
         public IRepository<Role> GetRoleRepository()
         {
-            return roleRepo ?? (roleRepo = new RoleRepository(ctx));
+                return roleRepo ?? (roleRepo = new RoleRepository());
         }
         public IRepository<Platform> GetPlatformRepository()
         {
-            return platformRepo ?? (platformRepo = new PlatformRepository(ctx));
+                return platformRepo ?? (platformRepo = new PlatformRepository());
         }
         public IRepository<CrewApplication> GetCrewApplicationRepository()
         {
-            return crewApplicationRepo ?? (crewApplicationRepo = new CrewApplicationRepository(ctx));
+                return crewApplicationRepo ?? (crewApplicationRepo = new CrewApplicationRepository());
         }
         public IRepository<PlatformGame> GetPlatformGameRepository()
         {
-            return platformGameRepo ?? (platformGameRepo = new PlatformGameRepository(ctx));
+                return platformGameRepo ?? (platformGameRepo = new PlatformGameRepository());
         }
         public IRepository<CrewGameSuggestion> GetCGSRepository()
         {
-            return CGSRepo ?? (CGSRepo = new CrewGameSuggestionRepository(ctx));
+                return CGSRepo ?? (CGSRepo = new CrewGameSuggestionRepository());
         }
         public IRepository<Order> GetOrderRepository()
         {
-            return OrderRepo ?? (OrderRepo = new OrderRepository(ctx));
+                return OrderRepo ?? (OrderRepo = new OrderRepository());
         }
         public IRepository<Orderline> GetOrderlineRepository()
         {
-            return OrderlineRepo ?? (OrderlineRepo = new OrderlinesRepository(ctx));
+                return OrderlineRepo ?? (OrderlineRepo = new OrderlinesRepository());
         }
         public IRepository<SuggestionUsers> GetSuggestionUsersRepository()
         {
-            return SuggestionUsersRepo ?? (SuggestionUsersRepo = new SuggestionUsersRepository(ctx));
+                return SuggestionUsersRepo ?? (SuggestionUsersRepo = new SuggestionUsersRepository());
         }
     }
 }

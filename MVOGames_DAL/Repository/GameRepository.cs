@@ -13,85 +13,95 @@ namespace MVOGames_DAL.Repository
 {
     public class GameRepository : IRepository<Game>
     {
-        private MVOGamesContext ctx;
-        public GameRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(Game t)
         {
-            if (t.Genres != null)
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                t.Genres.ForEach(x => ctx.Entry(x).State = EntityState.Unchanged);
-                ctx.Games.Add(t);
-                ctx.SaveChanges();
+                if (t.Genres != null)
+                {
+                    t.Genres.ForEach(x => ctx.Entry(x).State = EntityState.Unchanged);
+                    ctx.Games.Add(t);
+                    ctx.SaveChanges();
+                }
             }
         }
 
         public void Delete(int? id)
         {
-            Game game = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Games.Attach(game);
-                ctx.Games.Remove(game);
-                ctx.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
+                Game game = Find(id);
+                try
+                {
+                    ctx.Games.Attach(game);
+                    ctx.Games.Remove(game);
+                    ctx.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
 
+                }
             }
         }
 
         public Game Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
-                }
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
 
+                }
+                return null;
             }
-            return null;
         }
 
         public List<Game> ReadAll()
         {
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                return ctx.Games.Include("Genres").ToList();
-            }
-            catch (Exception)
-            {
-                return null;
+                try
+                {
+                    return ctx.Games.Include("Genres").ToList();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
         }
 
         public void Update(Game t)
         {
-            var original = ctx.Games.Include(j => j.Genres)
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                var original = ctx.Games.Include(j => j.Genres)
                .Single(j => j.Id == t.Id);
 
-            // Update scalar/complex properties
-            ctx.Entry(original).CurrentValues.SetValues(t);
+                // Update scalar/complex properties
+                ctx.Entry(original).CurrentValues.SetValues(t);
 
-            // Update reference
-            original.Genres.Clear();
+                // Update reference
+                original.Genres.Clear();
 
-            foreach (var genre in t.Genres)
-            {
-                //ctx.Users.Attach(user);
-                original.Genres.Add(ctx.Genres.FirstOrDefault(x => x.Id == genre.Id));
+                foreach (var genre in t.Genres)
+                {
+                    //ctx.Users.Attach(user);
+                    original.Genres.Add(ctx.Genres.FirstOrDefault(x => x.Id == genre.Id));
 
-                //ctx.Entry(t).State = EntityState.Modified;
+                    //ctx.Entry(t).State = EntityState.Modified;
 
-                //foreach (var item in t.Genres)
-                //{
-                //    ctx.Entry(item).State = EntityState.Modified;
-                //}
+                    //foreach (var item in t.Genres)
+                    //{
+                    //    ctx.Entry(item).State = EntityState.Modified;
+                    //}
+                }
+                ctx.SaveChanges();
             }
-            ctx.SaveChanges();
         }
     }
 }

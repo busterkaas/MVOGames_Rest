@@ -12,82 +12,91 @@ namespace MVOGames_DAL.Repository
 {
     public class OrderRepository : IRepository<Order>
     {
-        private MVOGamesContext ctx;
-
-        public OrderRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
 
         public void Add(Order t)
         {
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                t.User = new User() { Id = t.UserId };
-                ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
-                ctx.Orders.Add(t);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                try
+                {
+                    t.User = new User() { Id = t.UserId };
+                    ctx.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
+                    ctx.Orders.Add(t);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
 
+                }
             }
         }
 
         public void Delete(int? id)
         {
-            var order = ctx.Orders.Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Orders.Attach(order);
-                ctx.Orders.Remove(order);
-                ctx.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw e;
+                var order = ctx.Orders.Find(id);
+                try
+                {
+                    ctx.Orders.Attach(order);
+                    ctx.Orders.Remove(order);
+                    ctx.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
         }
 
         public Order Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<Order> ReadAll()
         {
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                return ctx.Orders.Include("User").Include("Orderlines").ToList();
-            }
-            catch (Exception)
-            {
-                return null;
+                try
+                {
+                    return ctx.Orders.Include("User.Role").Include("Orderlines").ToList();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
         }
 
         public void Update(Order t)
         {
-            var originalOrder = ctx.Orders.Include(j => j.Orderlines).Single(j => j.Id == t.Id);
-
-            // Update scalar/complex properties
-            ctx.Entry(originalOrder).CurrentValues.SetValues(t);
-
-            // Update reference
-            originalOrder.Orderlines.Clear();
-
-            foreach (var orderline in t.Orderlines)
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                originalOrder.Orderlines.Add(ctx.Orderlines.FirstOrDefault(x => x.Id == orderline.Id));
+                var originalOrder = ctx.Orders.Include(j => j.Orderlines).Single(j => j.Id == t.Id);
+
+                // Update scalar/complex properties
+                ctx.Entry(originalOrder).CurrentValues.SetValues(t);
+
+                // Update reference
+                originalOrder.Orderlines.Clear();
+
+                foreach (var orderline in t.Orderlines)
+                {
+                    originalOrder.Orderlines.Add(ctx.Orderlines.FirstOrDefault(x => x.Id == orderline.Id));
+                }
+                ctx.SaveChanges();
             }
-            ctx.SaveChanges();
         }
     }
 }

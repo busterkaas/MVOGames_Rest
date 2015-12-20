@@ -40,12 +40,10 @@ namespace DomainModels.Models
         {
             BCrypt.Net.BCrypt.HashPassword("", WorkFactor);
         }
-        public virtual List<Crew> Crews { get; set; }
+        public List<Crew> Crews { get; set; }
         [Required]
-        public virtual Role Role { get; set; }
-
         public int RoleId { get; set; }
-
-        public virtual List<CrewApplication> Applications { get; set; }
+        public Role Role { get; set; }
+        public List<CrewApplication> Applications { get; set; }
     }
 }

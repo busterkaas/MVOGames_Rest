@@ -14,71 +14,81 @@ namespace MVOGames_DAL.Repository
 {
     public class CrewRepository : IRepository<Crew>
     {
-        private MVOGamesContext ctx;
-        public CrewRepository(MVOGamesContext context)
-        {
-            ctx = context;
-        }
         public void Add(Crew t)
         {
-            ctx.Crews.Add(t);
-            ctx.SaveChanges();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                ctx.Crews.Add(t);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(int? id)
         {
-            Crew crew = Find(id);
-            try
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                ctx.Crews.Attach(crew);
-                ctx.Crews.Remove(crew);
-                ctx.SaveChanges();
-            }
-            catch
-            {
+                Crew crew = Find(id);
+                try
+                {
+                    ctx.Crews.Attach(crew);
+                    ctx.Crews.Remove(crew);
+                    ctx.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
 
         public Crew Find(int? id)
         {
-            foreach (var item in ReadAll())
+            using (MVOGamesContext ctx = new MVOGamesContext())
             {
-                if (item.Id == id)
+                foreach (var item in ReadAll())
                 {
-                    return item;
+                    if (item.Id == id)
+                    {
+                        return item;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         public List<Crew> ReadAll()
         {
-            return ctx.Crews.ToList();
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                return ctx.Crews.Include("Users.Role").ToList();
+            }
         }
 
         public void Update(Crew t)
         {
-            var originalCrew = ctx.Crews.Include(j => j.Users)
+            using (MVOGamesContext ctx = new MVOGamesContext())
+            {
+                var originalCrew = ctx.Crews.Include(j => j.Users)
                 .Single(j => j.Id == t.Id);
 
-            // Update scalar/complex properties
-            ctx.Entry(originalCrew).CurrentValues.SetValues(t);
+                // Update scalar/complex properties
+                ctx.Entry(originalCrew).CurrentValues.SetValues(t);
 
-            // Update reference
-            originalCrew.Users.Clear();
-           
-            foreach (var user in t.Users)
-            {
-                //ctx.Users.Attach(user);
-                originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
-                
+                // Update reference
+                originalCrew.Users.Clear();
 
-        }
+                foreach (var user in t.Users)
+                {
+                    //ctx.Users.Attach(user);
+                    originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
 
-            //db.Genres.Attach(entity.Genre)
-            //originalVinyl.Genre = entity.Genre;
 
-            ctx.SaveChanges();
+                }
+
+                //db.Genres.Attach(entity.Genre)
+                //originalVinyl.Genre = entity.Genre;
+
+                ctx.SaveChanges();
+            }
         }
     }
 }
