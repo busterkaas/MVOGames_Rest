@@ -78,15 +78,9 @@ namespace MVOGames_DAL.Repository
 
                 foreach (var user in t.Users)
                 {
-                    //ctx.Users.Attach(user);
                     originalCrew.Users.Add(ctx.Users.FirstOrDefault(x => x.Id == user.Id));
-
-
                 }
-
-                //db.Genres.Attach(entity.Genre)
-                //originalVinyl.Genre = entity.Genre;
-
+                
                 ctx.SaveChanges();
             }
         }
