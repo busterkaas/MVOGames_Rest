@@ -143,17 +143,32 @@ namespace MVOGames_DAL.Context
             {
                 Id = 7,
                 Username = "user",
-                City = "UserCity",
-                Email = "user@user.com",
-                FirstName = "User",
-                LastName = "Userness",
+                City = "Kållund",
+                Email = "Jensi@juhuuuu.com",
+                FirstName = "Jens",
+                LastName = "Andersen",
                 HouseNr = "1",
-                StreetName = "UserStreet",
-                ZipCode = 1000,
+                StreetName = "Nørregade",
+                ZipCode = 9292,
                 Crews = new List<Crew> { },
                 Role = role2
             };
             user8.SetPassword("user");
+            User user9 = new User
+            {
+                Id = 9,
+                Username = "admin",
+                City = "Nyborg",
+                Email = "Heinzi@juhuuuu.com",
+                FirstName = "Heinz",
+                LastName = "Petersen",
+                HouseNr = "1",
+                StreetName = "Vestergade",
+                ZipCode = 2323,
+                Crews = new List<Crew> { },
+                Role = role1
+            };
+            user9.SetPassword("admin");
 
 
 
