@@ -87,18 +87,5 @@ namespace MVOGames_Rest.Controllers
             return Ok(gameDTO);
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool GameExists(int id)
-        //{
-        //    return db.Games.Count(e => e.Id == id) > 0;
-        //}
     }
 }

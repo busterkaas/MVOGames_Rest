@@ -24,11 +24,7 @@ namespace MVOGames_Rest.Controllers
             var usersDTO = converter.Convert(users);
             return usersDTO;
         }
-
-
-        //[Route("Hej")]
-
-
+        
         // GET: api/Users/5
         [ResponseType(typeof(UserDTO))]
         public IHttpActionResult GetUser(int id)
