@@ -180,6 +180,7 @@ namespace MVOGames_DAL.Context
             context.Users.Add(user6);
             context.Users.Add(user7);
             context.Users.Add(user8);
+            context.Users.Add(user9);
 
             Crew crew = context.Crews.Add(new Crew() { Id = 1, Name = "SOB", CrewImgUrl = "http://prod.cloud.rockstargames.com/crews/sc/1510/10088/publish/emblem/emblem_128.png", Users = new List<User>() { user2, user3, user7 }, CrewLeaderId = 2});
             Crew crew2 = context.Crews.Add(new Crew() { Id = 1, Name = "PS4Crew", CrewImgUrl = "", Users = new List<User>() { user7, user3, user2 }, CrewLeaderId = 6 });
